@@ -240,6 +240,7 @@
 
     /* CONTATTI */
     .contact-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+    .gironi-grid { grid-template-columns: 1fr !important; }
 
     /* GALLERIA */
     #gallery-grid { grid-template-columns: 1fr 1fr !important; }
@@ -260,6 +261,9 @@
   <a href="index.html" class="nav-logo">← <span>Futsal</span> Fabbrico</a>
   <button class="hamburger" id="hamburger-tdp" onclick="toggleNavTDP()" aria-label="Menu"><span></span><span></span><span></span></button>
   <ul class="nav-links" id="nav-links-tdp">
+    <li><a href="#gironi">Gironi</a></li>
+    <li><a href="#risultati">Risultati</a></li>
+    <li><a href="#calendario">Calendario</a></li>
     <li><a href="#palmares">Palmares</a></li>
     <li><a href="#info">Info</a></li>
         <li><a href="#contatti">Contatti</a></li>
@@ -283,7 +287,9 @@
     </div>
     <div class="hero-btns" style="flex-direction:column;align-items:flex-start;gap:12px;">
       <div style="display:flex;gap:10px;flex-wrap:wrap;">
-        <a href="#iscrizione" class="btn btn-primary" style="background:linear-gradient(135deg,#FF6B00,#FF8C35);">📋 Iscriviti al Torneo</a>
+        <a href="#gironi" class="btn btn-primary" style="background:linear-gradient(135deg,#FF6B00,#FF8C35);">🏆 Gironi</a>
+        <a href="risultati.html" class="btn btn-secondary">⚽ Risultati</a>
+        <a href="#calendario" class="btn btn-secondary">📅 Calendario</a>
         <a href="#regolamento" class="btn btn-secondary">📄 Regolamento</a>
       </div>
       <a href="https://www.instagram.com/torneodelpretefavreg/" target="_blank" class="btn btn-secondary" style="font-size:0.8rem;">📸 Seguici su Instagram</a>
@@ -309,6 +315,94 @@
       <a href="https://www.tiktok.com/@torneodelpretefavreg" target="_blank" class="social-btn">🎵 TikTok</a>
       <a href="https://www.youtube.com/@tdpfabbrico" target="_blank" class="social-btn">▶️ YouTube</a>
       <a href="https://on.soundcloud.com/0ky8VQHXmt8ZOd4Vuj" target="_blank" class="social-btn">🎶 Inno Ufficiale</a>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- GIRONI -->
+<div id="gironi" class="section-full" style="padding-bottom:0;">
+  <div class="section-full-inner">
+    <div class="section-label">// Edizione 2026</div>
+    <h2 class="section-title">I Gironi</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;" class="gironi-grid">
+
+      <!-- GIRONE A -->
+      <div style="background:var(--bg2);border:1px solid rgba(255,255,255,0.07);padding:20px;border-radius:4px;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:3px;color:var(--orange);margin-bottom:14px;border-bottom:1px solid rgba(255,107,0,0.3);padding-bottom:8px;">GIRONE A</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;align-items:center;gap:10px;font-size:0.9rem;"><span style="color:var(--orange);font-family:'Bebas Neue';font-size:0.8rem;min-width:24px;">A1</span> Favregas</div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:0.9rem;"><span style="color:var(--orange);font-family:'Bebas Neue';font-size:0.8rem;min-width:24px;">A2</span> Ja Fato</div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:0.9rem;"><span style="color:var(--orange);font-family:'Bebas Neue';font-size:0.8rem;min-width:24px;">A3</span> Bronx</div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:0.9rem;"><span style="color:var(--orange);font-family:'Bebas Neue';font-size:0.8rem;min-width:24px;">A4</span> Studio NRF</div>
+        </div>
+      </div>
+
+      <!-- GIRONE B -->
+      <div style="background:var(--bg2);border:1px solid rgba(255,255,255,0.07);padding:20px;border-radius:4px;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:3px;color:var(--orange);margin-bottom:14px;border-bottom:1px solid rgba(255,107,0,0.3);padding-bottom:8px;">GIRONE B</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;align-items:center;gap:10px;font-size:0.9rem;"><span style="color:var(--orange);font-family:'Bebas Neue';font-size:0.8rem;min-width:24px;">B1</span> Sagra Part Time</div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:0.9rem;"><span style="color:var(--orange);font-family:'Bebas Neue';font-size:0.8rem;min-width:24px;">B2</span> Benedetti dal Palo</div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:0.9rem;"><span style="color:var(--orange);font-family:'Bebas Neue';font-size:0.8rem;min-width:24px;">B3</span> Ammond</div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:0.9rem;"><span style="color:var(--orange);font-family:'Bebas Neue';font-size:0.8rem;min-width:24px;">B4</span> Margherita Tirata</div>
+        </div>
+      </div>
+
+      <!-- GIRONE C -->
+      <div style="background:var(--bg2);border:1px solid rgba(255,255,255,0.07);padding:20px;border-radius:4px;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:3px;color:var(--orange);margin-bottom:14px;border-bottom:1px solid rgba(255,107,0,0.3);padding-bottom:8px;">GIRONE C</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;align-items:center;gap:10px;font-size:0.9rem;"><span style="color:var(--orange);font-family:'Bebas Neue';font-size:0.8rem;min-width:24px;">C1</span> Al Leon D'Oro</div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:0.9rem;"><span style="color:var(--orange);font-family:'Bebas Neue';font-size:0.8rem;min-width:24px;">C2</span> Società Agricola MP</div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:0.9rem;"><span style="color:var(--orange);font-family:'Bebas Neue';font-size:0.8rem;min-width:24px;">C3</span> Fanalino FC</div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:0.9rem;"><span style="color:var(--orange);font-family:'Bebas Neue';font-size:0.8rem;min-width:24px;">C4</span> Azul Club</div>
+        </div>
+      </div>
+
+      <!-- GIRONE D -->
+      <div style="background:var(--bg2);border:1px solid rgba(255,255,255,0.07);padding:20px;border-radius:4px;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:3px;color:var(--orange);margin-bottom:14px;border-bottom:1px solid rgba(255,107,0,0.3);padding-bottom:8px;">GIRONE D</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;align-items:center;gap:10px;font-size:0.9rem;"><span style="color:var(--orange);font-family:'Bebas Neue';font-size:0.8rem;min-width:24px;">D1</span> Barbershop da Vincenzo</div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:0.9rem;"><span style="color:var(--orange);font-family:'Bebas Neue';font-size:0.8rem;min-width:24px;">D2</span> Bonetti Auto</div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:0.9rem;"><span style="color:var(--orange);font-family:'Bebas Neue';font-size:0.8rem;min-width:24px;">D3</span> Taverna</div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:0.9rem;"><span style="color:var(--orange);font-family:'Bebas Neue';font-size:0.8rem;min-width:24px;">D4</span> C'era una volta</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- RISULTATI -->
+<div id="risultati" class="section-full" style="padding-bottom:0;">
+  <div class="section-full-inner">
+    <div class="section-label">// Live</div>
+    <h2 class="section-title">Risultati</h2>
+    <div style="background:var(--bg2);border:1px solid rgba(255,255,255,0.07);padding:48px 24px;border-radius:4px;text-align:center;">
+      <div style="font-size:2.5rem;margin-bottom:16px;">⚽</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:2px;color:var(--white);margin-bottom:8px;">Risultati, classifiche e marcatori</div>
+      <p style="color:var(--gray);font-size:0.95rem;max-width:420px;margin:0 auto 24px;">Segui tutti i risultati delle partite, le classifiche dei gironi e la classifica marcatori, aggiornati durante il torneo.</p>
+      <a href="risultati.html" class="btn btn-primary" style="background:linear-gradient(135deg,#FF6B00,#FF8C35);">📊 Vai ai Risultati →</a>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- CALENDARIO -->
+<div id="calendario" class="section-full" style="padding-bottom:0;">
+  <div class="section-full-inner">
+    <div class="section-label">// Quando si gioca</div>
+    <h2 class="section-title">Calendario</h2>
+    <div style="background:var(--bg2);border:1px solid rgba(255,255,255,0.07);padding:48px 24px;border-radius:4px;text-align:center;">
+      <div style="font-size:2.5rem;margin-bottom:16px;">📅</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:2px;color:var(--white);margin-bottom:8px;">Calendario in arrivo</div>
+      <p style="color:var(--gray);font-size:0.95rem;max-width:420px;margin:0 auto;">Il calendario completo delle partite sarà pubblicato a breve.</p>
     </div>
   </div>
 </div>
@@ -560,7 +654,6 @@
   </div>
 </div>
 
-<hr class="divider">
 
 <!-- REGOLAMENTO -->
 <div id="regolamento" class="section-full">

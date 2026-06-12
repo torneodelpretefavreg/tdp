@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+<title>Risultati — Torneo del Prete 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #FF6B00;
+    --orange-light: #FF8C35;
+    --black: #0A0A0A;
+    --dark: #111111;
+    --dark2: #1A1A1A;
+    --white: #F5F5F5;
+    --gray: #888888;
+    --green: #2ecc71;
+    --red: #e74c3c;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--white); font-family: 'Barlow', sans-serif; overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(10,10,10,0.95); backdrop-filter: blur(10px);
+    border-bottom: 2px solid var(--orange);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px; height: 64px;
+  }
+  .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: var(--orange); letter-spacing: 2px; text-decoration: none; }
+  .nav-logo span { color: var(--white); }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { color: var(--gray); text-decoration: none; font-weight: 600; font-size: 0.82rem; letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--orange); }
+
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: none; border: none; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); transition: all 0.3s; }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* HERO */
+  .page-hero { padding: 120px 40px 50px; max-width: 1200px; margin: 0 auto; position: relative; }
+  .page-hero::after { content: 'TDP'; position: absolute; right: 20px; top: 70px; font-family: 'Bebas Neue', sans-serif; font-size: clamp(6rem,16vw,12rem); color: rgba(255,107,0,0.04); line-height: 0.8; pointer-events: none; z-index: 0; }
+  .page-tag { display: inline-block; background: var(--orange); color: var(--black); font-size: 0.7rem; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; padding: 6px 14px; margin-bottom: 18px; }
+  .page-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem, 9vw, 6rem); line-height: 0.85; letter-spacing: 2px; position: relative; z-index: 1; }
+  .page-title .accent { color: var(--orange); }
+  .page-sub { color: var(--gray); font-size: 1rem; margin-top: 14px; max-width: 540px; line-height: 1.6; }
+
+  /* TABS */
+  .tabs-wrap { max-width: 1200px; margin: 0 auto; padding: 0 40px 40px; }
+  .tabs-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+  .tab-label { font-size: 0.7rem; color: var(--gray); letter-spacing: 2px; text-transform: uppercase; width: 100%; margin-bottom: 4px; }
+  .tab-btn {
+    padding: 10px 22px; font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 0.8rem;
+    letter-spacing: 1.5px; text-transform: uppercase; background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.12); color: var(--white); cursor: pointer; transition: all 0.2s;
+  }
+  .tab-btn:hover { border-color: var(--orange); color: var(--orange); }
+  .tab-btn.active { background: var(--orange); color: var(--black); border-color: var(--orange); }
+
+  /* SECTIONS */
+  .section { padding: 50px 40px; max-width: 1200px; margin: 0 auto; }
+  .section-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--orange); margin-bottom: 10px; }
+  .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem, 5vw, 3rem); letter-spacing: 2px; margin-bottom: 28px; line-height: 1; }
+  .divider { border: none; border-top: 1px solid rgba(255,255,255,0.07); margin: 0; }
+
+  /* MATCH CARD */
+  .match-day-label { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; letter-spacing: 2px; color: var(--orange); margin: 28px 0 14px; padding-bottom: 6px; border-bottom: 1px solid rgba(255,107,0,0.25); }
+  .match-card {
+    display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 12px;
+    background: var(--dark2); border: 1px solid rgba(255,255,255,0.07); padding: 16px 20px; margin-bottom: 10px;
+    transition: border-color 0.2s;
+  }
+  .match-card:hover { border-color: rgba(255,107,0,0.3); }
+  .match-card .team { font-weight: 600; font-size: 0.95rem; }
+  .match-card .team.home { text-align: right; }
+  .match-card .team.away { text-align: left; }
+  .match-card .team.winner { color: var(--orange); }
+  .match-score { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 1px; min-width: 70px; text-align: center; padding: 4px 10px; background: var(--black); border: 1px solid rgba(255,255,255,0.1); }
+  .match-score.pending { color: var(--gray); font-size: 0.9rem; font-family: 'Barlow'; letter-spacing: 1px; }
+  .match-meta { grid-column: 1/-1; display: flex; justify-content: center; gap: 14px; font-size: 0.7rem; color: var(--gray); margin-top: 4px; letter-spacing: 1px; }
+  .match-tav { font-size: 0.65rem; color: var(--orange); letter-spacing: 1px; }
+
+  /* STANDINGS */
+  .girone-block { margin-bottom: 40px; }
+  .girone-head { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; letter-spacing: 3px; color: var(--orange); margin-bottom: 12px; }
+  .standings-table { width: 100%; border-collapse: collapse; background: var(--dark2); }
+  .standings-table th { background: var(--dark); color: var(--gray); font-size: 0.65rem; letter-spacing: 1px; text-transform: uppercase; padding: 10px 8px; text-align: center; border-bottom: 2px solid var(--orange); }
+  .standings-table th:nth-child(2) { text-align: left; }
+  .standings-table td { padding: 11px 8px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.85rem; }
+  .standings-table td:nth-child(2) { text-align: left; font-weight: 600; }
+  .standings-table tr:hover td { background: rgba(255,107,0,0.05); }
+  .standings-table .qualified td:first-child { color: var(--orange); }
+  .standings-table .qualified td:nth-child(2)::after { content: ' ✓'; color: var(--green); font-size: 0.7rem; }
+  .pos-badge { font-family: 'Bebas Neue', sans-serif; font-size: 1rem; }
+  .pos-badge.top { color: var(--orange); }
+  .pts-cell { font-weight: 900; color: var(--orange); }
+
+  /* SCORERS */
+  .scorer-row { display: grid; grid-template-columns: 40px 1fr auto; align-items: center; gap: 14px; padding: 13px 18px; background: var(--dark2); border: 1px solid rgba(255,255,255,0.06); margin-bottom: 8px; transition: border-color 0.2s; }
+  .scorer-row:hover { border-color: rgba(255,107,0,0.3); }
+  .scorer-pos { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; color: var(--gray); text-align: center; }
+  .scorer-pos.podium { color: var(--orange); }
+  .scorer-name { font-weight: 600; font-size: 0.95rem; }
+  .scorer-team { font-size: 0.75rem; color: var(--gray); }
+  .scorer-goals { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: var(--orange); }
+  .scorer-goals span { font-size: 0.7rem; color: var(--gray); font-family: 'Barlow'; }
+
+  /* EMPTY STATE */
+  .empty-state { background: var(--dark2); border: 1px solid rgba(255,255,255,0.07); padding: 48px 24px; border-radius: 4px; text-align: center; }
+  .empty-state .ico { font-size: 2.5rem; margin-bottom: 16px; }
+  .empty-state .t { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 2px; margin-bottom: 8px; }
+  .empty-state .s { color: var(--gray); font-size: 0.95rem; max-width: 420px; margin: 0 auto; }
+
+  /* FOOTER */
+  footer { background: var(--dark); border-top: 2px solid rgba(255,107,0,0.3); padding: 36px 40px; text-align: center; }
+  .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: var(--orange); letter-spacing: 3px; margin-bottom: 6px; }
+  .footer-text { color: var(--gray); font-size: 0.82rem; }
+
+  @media (max-width: 768px) {
+    html, body { overflow-x: hidden; max-width: 100vw; }
+    nav { padding: 0 16px; }
+    .hamburger { display: flex; }
+    .nav-links {
+      display: none !important; position: fixed; top: 64px; left: 0; right: 0;
+      background: rgba(10,10,10,0.98); flex-direction: column !important;
+      gap: 0 !important; z-index: 99; border-bottom: 2px solid var(--orange);
+    }
+    .nav-links.open { display: flex !important; }
+    .nav-links li { border-bottom: 1px solid rgba(255,255,255,0.06); list-style: none; }
+    .nav-links a { display: block; padding: 16px 24px; }
+    .page-hero { padding: 100px 16px 40px; }
+    .tabs-wrap { padding: 0 16px 30px; }
+    .section { padding: 40px 16px; }
+    .standings-table th, .standings-table td { padding: 9px 5px; font-size: 0.78rem; }
+    .standings-table th:nth-child(1), .standings-table td:nth-child(1) { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">← <span>Futsal</span> Fabbrico</a>
+  <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menu"><span></span><span></span><span></span></button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="tdp_early.html">Torneo</a></li>
+    <li><a href="#risultati" class="active">Risultati</a></li>
+    <li><a href="#classifiche">Classifiche</a></li>
+    <li><a href="#marcatori">Marcatori</a></li>
+    <li><a href="tdp_early.html#gironi">Gironi</a></li>
+    <li><a href="index.html">← Home</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="page-tag">⚽ Edizione 2026</div>
+  <h1 class="page-title">RISULTATI <span class="accent">& CLASSIFICHE</span></h1>
+  <p class="page-sub">Risultati, classifiche dei gironi e classifica marcatori del Torneo del Prete 2026, aggiornati durante il torneo.</p>
+</div>
+
+<!-- FILTRI -->
+<div class="tabs-wrap">
+  <div class="tabs-row">
+    <span class="tab-label">Filtra per girone</span>
+    <button class="tab-btn active" data-girone="ALL" onclick="setGirone('ALL', this)">Tutti</button>
+    <button class="tab-btn" data-girone="A" onclick="setGirone('A', this)">Girone A</button>
+    <button class="tab-btn" data-girone="B" onclick="setGirone('B', this)">Girone B</button>
+    <button class="tab-btn" data-girone="C" onclick="setGirone('C', this)">Girone C</button>
+    <button class="tab-btn" data-girone="D" onclick="setGirone('D', this)">Girone D</button>
+  </div>
+  <div class="tabs-row" id="giornata-tabs">
+    <span class="tab-label">Filtra per giornata</span>
+    <!-- popolato da JS -->
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- RISULTATI -->
+<div class="section" id="risultati">
+  <div class="section-label">// Partite</div>
+  <h2 class="section-title">Risultati</h2>
+  <div id="results-container"></div>
+</div>
+
+<hr class="divider">
+
+<!-- CLASSIFICHE -->
+<div class="section" id="classifiche">
+  <div class="section-label">// Gironi</div>
+  <h2 class="section-title">Classifiche</h2>
+  <div id="standings-container"></div>
+</div>
+
+<hr class="divider">
+
+<!-- MARCATORI -->
+<div class="section" id="marcatori">
+  <div class="section-label">// Capocannonieri</div>
+  <h2 class="section-title">Classifica Marcatori</h2>
+  <div id="scorers-container"></div>
+</div>
+
+<hr class="divider">
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">TDP 2026</div>
+  <div class="footer-text">Torneo del Prete · Fabbrico (RE) · 22 Giugno — 17 Luglio 2026</div>
+</footer>
+
+<script>
+/* ════════════════════════════════════════════════════════════════
+   DATI — MODIFICA SOLO QUESTA PARTE PER AGGIORNARE IL SITO
+   ════════════════════════════════════════════════════════════════ */
+
+// Squadre per girone (codice → nome)
+const TEAMS = {
+  A1:"Favregas", A2:"Ja Fato", A3:"Bronx", A4:"Studio NRF",
+  B1:"Sagra Part Time", B2:"Benedetti dal Palo", B3:"Ammond", B4:"Margherita Tirata",
+  C1:"Al Leon D'Oro", C2:"Società Agricola MP", C3:"Fanalino FC", C4:"Azul Club",
+  D1:"Barbershop da Vincenzo", D2:"Bonetti Auto", D3:"Taverna", D4:"C'era una volta"
+};
+
+// CALENDARIO PARTITE (fase a gironi)
+// Per inserire un risultato: aggiungi "hg" (gol casa) e "ag" (gol trasferta).
+// Lascia senza hg/ag per partite non ancora giocate.
+// "tav": true  → vittoria a tavolino (mostra 6-0 TAV)
+const MATCHES = [
+  // GIORNATA 1 — 22/06
+  { g:1, date:"22/06", time:"20:00", home:"A1", away:"A2" /*, hg:0, ag:0 */ },
+  { g:1, date:"22/06", time:"21:00", home:"B1", away:"B2" },
+  { g:1, date:"22/06", time:"22:00", home:"C1", away:"C2" },
+  // GIORNATA 2 — 24/06
+  { g:2, date:"24/06", time:"20:00", home:"D1", away:"D2" },
+  { g:2, date:"24/06", time:"21:00", home:"A3", away:"A4" },
+  { g:2, date:"24/06", time:"22:00", home:"B3", away:"B4" },
+  // GIORNATA 3 — 26/06
+  { g:3, date:"26/06", time:"20:00", home:"C3", away:"C4" },
+  { g:3, date:"26/06", time:"21:00", home:"D3", away:"D4" },
+  { g:3, date:"26/06", time:"22:00", home:"A1", away:"A3" },
+  // GIORNATA 4 — 28/06
+  { g:4, date:"28/06", time:"20:00", home:"B1", away:"B3" },
+  { g:4, date:"28/06", time:"21:00", home:"C1", away:"C3" },
+  { g:4, date:"28/06", time:"22:00", home:"D1", away:"D3" },
+  // GIORNATA 5 — 29/06
+  { g:5, date:"29/06", time:"20:00", home:"A2", away:"A4" },
+  { g:5, date:"29/06", time:"21:00", home:"B2", away:"B4" },
+  { g:5, date:"29/06", time:"22:00", home:"C2", away:"C4" },
+  // GIORNATA 6 — 01/07
+  { g:6, date:"01/07", time:"20:00", home:"D2", away:"D4" },
+  { g:6, date:"01/07", time:"21:00", home:"A1", away:"A4" },
+  { g:6, date:"01/07", time:"22:00", home:"B1", away:"B4" },
+  // GIORNATA 7 — 06/07
+  { g:7, date:"06/07", time:"20:00", home:"C1", away:"C4" },
+  { g:7, date:"06/07", time:"21:00", home:"D1", away:"D4" },
+  { g:7, date:"06/07", time:"22:00", home:"A2", away:"A3" },
+  // GIORNATA 8 — 08/07
+  { g:8, date:"08/07", time:"20:00", home:"B2", away:"B3" },
+  { g:8, date:"08/07", time:"21:00", home:"C2", away:"C3" },
+  { g:8, date:"08/07", time:"22:00", home:"D2", away:"D3" },
+];
+
+// MARCATORI — aggiungi { name:"Nome", team:"A1", goals:3 }
+const SCORERS = [
+  // { name:"Mario Rossi", team:"A1", goals:5 },
+];
+
+/* ════════════════════════════════════════════════════════════════
+   FINE DATI — da qui in poi è codice, non serve modificare
+   ════════════════════════════════════════════════════════════════ */
+
+let curGirone = "ALL";
+let curGiornata = "ALL";
+
+const gironeOf = code => code.charAt(0);
+const isPlayed = m => (typeof m.hg === "number" && typeof m.ag === "number") || m.tav;
+
+// Build giornata tabs
+function buildGiornataTabs() {
+  const giornate = [...new Set(MATCHES.map(m => m.g))].sort((a,b)=>a-b);
+  const wrap = document.getElementById("giornata-tabs");
+  let html = '<span class="tab-label">Filtra per giornata</span>';
+  html += `<button class="tab-btn active" data-g="ALL" onclick="setGiornata('ALL', this)">Tutte</button>`;
+  giornate.forEach(g => {
+    html += `<button class="tab-btn" data-g="${g}" onclick="setGiornata('${g}', this)">G${g}</button>`;
+  });
+  wrap.innerHTML = html;
+}
+
+function setGirone(g, btn) {
+  curGirone = g;
+  document.querySelectorAll('[data-girone]').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+}
+function setGiornata(g, btn) {
+  curGiornata = g;
+  document.querySelectorAll('[data-g]').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+}
+
+function scoreDisplay(m) {
+  if (m.tav) return { txt:"6 – 0", cls:"", tav:true };
+  if (isPlayed(m)) return { txt:`${m.hg} – ${m.ag}`, cls:"", tav:false };
+  return { txt:"DA GIOCARE", cls:"pending", tav:false };
+}
+
+function renderResults() {
+  const cont = document.getElementById("results-container");
+  let matches = MATCHES.filter(m => {
+    const okG = curGirone === "ALL" || gironeOf(m.home) === curGirone;
+    const okGior = curGiornata === "ALL" || String(m.g) === String(curGiornata);
+    return okG && okGior;
+  });
+
+  if (matches.length === 0) {
+    cont.innerHTML = `<div class="empty-state"><div class="ico">🔍</div><div class="t">Nessuna partita</div><div class="s">Nessuna partita corrisponde ai filtri selezionati.</div></div>`;
+    return;
+  }
+
+  const anyPlayed = MATCHES.some(isPlayed);
+  if (!anyPlayed) {
+    cont.innerHTML = `<div class="empty-state"><div class="ico">⚽</div><div class="t">Partite non ancora iniziate</div><div class="s">I risultati saranno visibili qui una volta iniziate le partite. Il torneo parte il 22 Giugno!</div></div>`;
+    return;
+  }
+
+  // group by giornata
+  const byG = {};
+  matches.forEach(m => { (byG[m.g] = byG[m.g] || []).push(m); });
+  let html = "";
+  Object.keys(byG).sort((a,b)=>a-b).forEach(g => {
+    const d = byG[g][0].date;
+    html += `<div class="match-day-label">Giornata ${g} · ${d}</div>`;
+    byG[g].forEach(m => {
+      const s = scoreDisplay(m);
+      let homeWin=false, awayWin=false;
+      if (m.tav) homeWin = true;
+      else if (isPlayed(m)) { homeWin = m.hg>m.ag; awayWin = m.ag>m.hg; }
+      html += `<div class="match-card">
+        <div class="team home ${homeWin?'winner':''}">${TEAMS[m.home]}</div>
+        <div class="match-score ${s.cls}">${s.txt}</div>
+        <div class="team away ${awayWin?'winner':''}">${TEAMS[m.away]}</div>
+        <div class="match-meta"><span>🕘 ${m.time}</span>${s.tav?'<span class="match-tav">VITTORIA A TAVOLINO</span>':''}</div>
+      </div>`;
+    });
+  });
+  cont.innerHTML = html;
+}
+
+function computeStandings(girone) {
+  const teams = Object.keys(TEAMS).filter(c => gironeOf(c) === girone);
+  const table = {};
+  teams.forEach(c => table[c] = { code:c, name:TEAMS[c], G:0,V:0,N:0,P:0,GF:0,GS:0,DR:0,PT:0 });
+
+  MATCHES.forEach(m => {
+    if (gironeOf(m.home) !== girone) return;
+    if (!isPlayed(m)) return;
+    let hg, ag;
+    if (m.tav) { hg=6; ag=0; } else { hg=m.hg; ag=m.ag; }
+    const H = table[m.home], A = table[m.away];
+    H.G++; A.G++; H.GF+=hg; H.GS+=ag; A.GF+=ag; A.GS+=hg;
+    if (hg>ag) { H.V++; H.PT+=3; A.P++; }
+    else if (ag>hg) { A.V++; A.PT+=3; H.P++; }
+    else { H.N++; A.N++; H.PT++; A.PT++; }
+  });
+  Object.values(table).forEach(t => t.DR = t.GF - t.GS);
+
+  return Object.values(table).sort((a,b) =>
+    b.PT-a.PT || b.DR-a.DR || b.GF-a.GF || a.name.localeCompare(b.name)
+  );
+}
+
+function renderStandings() {
+  const cont = document.getElementById("standings-container");
+  const gironi = curGirone === "ALL" ? ["A","B","C","D"] : [curGirone];
+  let html = "";
+  gironi.forEach(g => {
+    const rows = computeStandings(g);
+    html += `<div class="girone-block"><div class="girone-head">GIRONE ${g}</div>
+      <table class="standings-table"><thead><tr>
+        <th>#</th><th>Squadra</th><th>G</th><th>V</th><th>N</th><th>P</th><th>GF</th><th>GS</th><th>DR</th><th>PT</th>
+      </tr></thead><tbody>`;
+    rows.forEach((t, i) => {
+      const qual = i < 2 ? "qualified" : "";
+      html += `<tr class="${qual}">
+        <td><span class="pos-badge ${i<2?'top':''}">${i+1}</span></td>
+        <td>${t.name}</td>
+        <td>${t.G}</td><td>${t.V}</td><td>${t.N}</td><td>${t.P}</td>
+        <td>${t.GF}</td><td>${t.GS}</td><td>${t.DR>0?'+':''}${t.DR}</td>
+        <td class="pts-cell">${t.PT}</td>
+      </tr>`;
+    });
+    html += `</tbody></table></div>`;
+  });
+  cont.innerHTML = html;
+}
+
+function renderScorers() {
+  const cont = document.getElementById("scorers-container");
+  let list = SCORERS.slice();
+  if (curGirone !== "ALL") list = list.filter(s => gironeOf(s.team) === curGirone);
+
+  if (list.length === 0) {
+    cont.innerHTML = `<div class="empty-state"><div class="ico">👟</div><div class="t">Nessun marcatore</div><div class="s">La classifica marcatori sarà disponibile una volta iniziate le partite.</div></div>`;
+    return;
+  }
+  list.sort((a,b) => b.goals - a.goals || a.name.localeCompare(b.name));
+  let html = "";
+  list.forEach((s, i) => {
+    html += `<div class="scorer-row">
+      <div class="scorer-pos ${i<3?'podium':''}">${i+1}</div>
+      <div><div class="scorer-name">${s.name}</div><div class="scorer-team">${TEAMS[s.team]||s.team}</div></div>
+      <div class="scorer-goals">${s.goals}<span> gol</span></div>
+    </div>`;
+  });
+  cont.innerHTML = html;
+}
+
+function render() {
+  renderResults();
+  renderStandings();
+  renderScorers();
+}
+
+function toggleNav() {
+  const links = document.getElementById('nav-links');
+  const btn = document.getElementById('hamburger');
+  links.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+document.querySelectorAll('#nav-links a').forEach(a => {
+  a.addEventListener('click', () => {
+    document.getElementById('nav-links').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+  });
+});
+
+buildGiornataTabs();
+render();
+</script>
+</body>
+</html>
