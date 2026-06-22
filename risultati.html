@@ -221,10 +221,10 @@
 
 // Squadre per girone (codice → nome)
 const TEAMS = {
-  A1:"Favregas", A2:"Ja Fato", A3:"Bronx", A4:"Studio NRF",
+  A1:"Favregas", A2:"Ja Fato", A3:"Infinity World", A4:"Studio NRF",
   B1:"Sagra Part Time", B2:"Benedetti dal Palo", B3:"Ammond", B4:"Margherita Tirata",
   C1:"Al Leon D'Oro", C2:"Società Agricola MP", C3:"Fanalino FC", C4:"Azul Club",
-  D1:"Barbershop da Vincenzo", D2:"Bonetti Auto", D3:"Taverna", D4:"C'era una volta"
+  D1:"Barbershop da Vincenzo", D2:"Elettrozeta", D3:"Taverna", D4:"C'era una volta"
 };
 
 // CALENDARIO PARTITE (fase a gironi)
@@ -232,38 +232,38 @@ const TEAMS = {
 // Lascia senza hg/ag per partite non ancora giocate.
 // "tav": true  → vittoria a tavolino (mostra 6-0 TAV)
 const MATCHES = [
-  // GIORNATA 1 — 22/06
+  // GIORNATA 1 — Lun 22/06
   { g:1, date:"22/06", time:"20:00", home:"A1", away:"A2" /*, hg:0, ag:0 */ },
   { g:1, date:"22/06", time:"21:00", home:"B1", away:"B2" },
-  { g:1, date:"22/06", time:"22:00", home:"C1", away:"C2" },
-  // GIORNATA 2 — 24/06
-  { g:2, date:"24/06", time:"20:00", home:"D1", away:"D2" },
-  { g:2, date:"24/06", time:"21:00", home:"A3", away:"A4" },
+  { g:1, date:"22/06", time:"22:00", home:"D3", away:"D4" },
+  // GIORNATA 2 — Mer 24/06
+  { g:2, date:"24/06", time:"20:00", home:"A3", away:"A4" },
+  { g:2, date:"24/06", time:"21:00", home:"D1", away:"D2" },
   { g:2, date:"24/06", time:"22:00", home:"B3", away:"B4" },
-  // GIORNATA 3 — 26/06
-  { g:3, date:"26/06", time:"20:00", home:"C3", away:"C4" },
-  { g:3, date:"26/06", time:"21:00", home:"D3", away:"D4" },
-  { g:3, date:"26/06", time:"22:00", home:"A1", away:"A3" },
-  // GIORNATA 4 — 28/06
-  { g:4, date:"28/06", time:"20:00", home:"B1", away:"B3" },
-  { g:4, date:"28/06", time:"21:00", home:"C1", away:"C3" },
-  { g:4, date:"28/06", time:"22:00", home:"D1", away:"D3" },
-  // GIORNATA 5 — 29/06
+  // GIORNATA 3 — Ven 26/06
+  { g:3, date:"26/06", time:"20:00", home:"B1", away:"B3" },
+  { g:3, date:"26/06", time:"21:00", home:"A1", away:"A4" },
+  { g:3, date:"26/06", time:"22:00", home:"D2", away:"D3" },
+  // GIORNATA 4 — Dom 28/06
+  { g:4, date:"28/06", time:"20:00", home:"C1", away:"C4" },
+  { g:4, date:"28/06", time:"21:00", home:"C2", away:"C3" },
+  { g:4, date:"28/06", time:"22:00", home:"B2", away:"B4" },
+  // GIORNATA 5 — Lun 29/06
   { g:5, date:"29/06", time:"20:00", home:"A2", away:"A4" },
-  { g:5, date:"29/06", time:"21:00", home:"B2", away:"B4" },
-  { g:5, date:"29/06", time:"22:00", home:"C2", away:"C4" },
-  // GIORNATA 6 — 01/07
-  { g:6, date:"01/07", time:"20:00", home:"D2", away:"D4" },
-  { g:6, date:"01/07", time:"21:00", home:"A1", away:"A4" },
-  { g:6, date:"01/07", time:"22:00", home:"B1", away:"B4" },
-  // GIORNATA 7 — 06/07
-  { g:7, date:"06/07", time:"20:00", home:"C1", away:"C4" },
+  { g:5, date:"29/06", time:"21:00", home:"C1", away:"C3" },
+  { g:5, date:"29/06", time:"22:00", home:"A1", away:"A3" },
+  // GIORNATA 6 — Mer 01/07
+  { g:6, date:"01/07", time:"20:00", home:"C3", away:"C4" },
+  { g:6, date:"01/07", time:"21:00", home:"B1", away:"B4" },
+  { g:6, date:"01/07", time:"22:00", home:"D2", away:"D4" },
+  // GIORNATA 7 — Lun 06/07
+  { g:7, date:"06/07", time:"20:00", home:"A2", away:"A3" },
   { g:7, date:"06/07", time:"21:00", home:"D1", away:"D4" },
-  { g:7, date:"06/07", time:"22:00", home:"A2", away:"A3" },
-  // GIORNATA 8 — 08/07
-  { g:8, date:"08/07", time:"20:00", home:"B2", away:"B3" },
-  { g:8, date:"08/07", time:"21:00", home:"C2", away:"C3" },
-  { g:8, date:"08/07", time:"22:00", home:"D2", away:"D3" },
+  { g:7, date:"06/07", time:"22:00", home:"C2", away:"C4" },
+  // GIORNATA 8 — Mer 08/07
+  { g:8, date:"08/07", time:"20:00", home:"D1", away:"D3" },
+  { g:8, date:"08/07", time:"21:00", home:"B2", away:"B3" },
+  { g:8, date:"08/07", time:"22:00", home:"C2", away:"C1" },
 ];
 
 // MARCATORI — aggiungi { name:"Nome", team:"A1", goals:3 }
