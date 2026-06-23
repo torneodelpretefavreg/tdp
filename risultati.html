@@ -82,6 +82,12 @@
   .match-score { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 1px; min-width: 70px; text-align: center; padding: 4px 10px; background: var(--black); border: 1px solid rgba(255,255,255,0.1); }
   .match-score.pending { color: var(--gray); font-size: 0.9rem; font-family: 'Barlow'; letter-spacing: 1px; }
   .match-meta { grid-column: 1/-1; display: flex; justify-content: center; gap: 14px; font-size: 0.7rem; color: var(--gray); margin-top: 4px; letter-spacing: 1px; }
+  .match-goals { grid-column: 1/-1; display: grid; grid-template-columns: 1fr 1fr; gap: 3px 18px; margin-top: 10px; padding-top: 10px; border-top: 1px dashed rgba(255,255,255,0.12); }
+  .match-goals .gh { text-align: right; }
+  .match-goals .ga { text-align: left; }
+  .goal-line { font-size: 0.8rem; color: var(--white); line-height: 1.5; }
+  .goal-line .min { color: var(--orange); font-family: 'Bebas Neue', sans-serif; font-size: 0.82rem; margin: 0 5px; }
+  .goal-line.og { color: var(--gray); font-style: italic; }
   .match-tav { font-size: 0.65rem; color: var(--orange); letter-spacing: 1px; }
 
   /* STANDINGS */
@@ -233,9 +239,12 @@ const TEAMS = {
 // "tav": true  → vittoria a tavolino (mostra 6-0 TAV)
 const MATCHES = [
   // GIORNATA 1 — Lun 22/06
-  { g:1, date:"22/06", time:"20:00", home:"A1", away:"A2", hg:1, ag:0 },
-  { g:1, date:"22/06", time:"21:00", home:"B1", away:"B2", hg:2, ag:2 },
-  { g:1, date:"22/06", time:"22:00", home:"D3", away:"D4", hg:3, ag:1 },
+  { g:1, date:"22/06", time:"20:00", home:"A1", away:"A2", hg:1, ag:0,
+    goals:[ {p:"M. Scardovelli", side:"h", min:14} ] },
+  { g:1, date:"22/06", time:"21:00", home:"B1", away:"B2", hg:2, ag:2,
+    goals:[ {p:"V. Michael", side:"a", min:16}, {p:"Autogol", side:"h", min:18, og:true}, {p:"A. Amura", side:"a", min:25}, {p:"M. Pabla", side:"h", min:30} ] },
+  { g:1, date:"22/06", time:"22:00", home:"D3", away:"D4", hg:3, ag:1,
+    goals:[ {p:"M. Faraci", side:"h", min:20}, {p:"F. Equabile", side:"h", min:20}, {p:"A. Saturno", side:"h", min:21}, {p:"F. Mantovani", side:"a", min:27} ] },
   // GIORNATA 2 — Mer 24/06
   { g:2, date:"24/06", time:"20:00", home:"A3", away:"A4" },
   { g:2, date:"24/06", time:"21:00", home:"D1", away:"D2" },
@@ -320,6 +329,14 @@ function scoreDisplay(m) {
   return { txt:"DA GIOCARE", cls:"pending", tav:false };
 }
 
+function goalsBlock(m) {
+  if (!m.goals || !m.goals.length) return "";
+  const line = g => `<div class="goal-line ${g.og?'og':''}">${g.og?'⚪':'⚽'}<span class="min">${g.min}'</span>${g.p}</div>`;
+  const homeG = m.goals.filter(g => g.side === "h").map(line).join("");
+  const awayG = m.goals.filter(g => g.side === "a").map(line).join("");
+  return `<div class="match-goals"><div class="gh">${homeG}</div><div class="ga">${awayG}</div></div>`;
+}
+
 function renderResults() {
   const cont = document.getElementById("results-container");
   let matches = MATCHES.filter(m => {
@@ -354,7 +371,7 @@ function renderResults() {
       html += `<div class="match-card">
         <div class="team home ${homeWin?'winner':''}">${TEAMS[m.home]}</div>
         <div class="match-score ${s.cls}">${s.txt}</div>
-        <div class="team away ${awayWin?'winner':''}">${TEAMS[m.away]}</div>
+        <div class="team away ${awayWin?'winner':''}">${TEAMS[m.away]}</div>${goalsBlock(m)}
         <div class="match-meta"><span>🕘 ${m.time}</span>${s.tav?'<span class="match-tav">VITTORIA A TAVOLINO</span>':''}</div>
       </div>`;
     });
