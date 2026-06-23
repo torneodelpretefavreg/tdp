@@ -264,6 +264,7 @@
     <li><a href="#gironi">Gironi</a></li>
     <li><a href="#risultati">Risultati</a></li>
     <li><a href="#calendario">Calendario</a></li>
+    <li><a href="#foto">Foto</a></li>
     <li><a href="#palmares">Palmares</a></li>
     <li><a href="#info">Info</a></li>
         <li><a href="#contatti">Contatti</a></li>
@@ -484,6 +485,18 @@
     </div>
 
     <p style="color:var(--gray);font-size:0.82rem;text-align:center;margin-top:20px;">Fase a gironi · 22 giugno — 8 luglio 2026. Risultati e classifiche aggiornati su <a href="risultati.html" style="color:var(--orange);text-decoration:none;">Risultati →</a></p>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- FOTO SERATE -->
+<div id="foto" class="section-full" style="padding-bottom:0;">
+  <div class="section-full-inner">
+    <div class="section-label">// Gallery</div>
+    <h2 class="section-title">Foto delle serate</h2>
+    <p style="color:var(--gray);font-size:0.95rem;margin:-20px 0 32px;max-width:560px;">Le foto di ogni serata vengono caricate su Google Drive. Clicca sul pulsante della serata per aprire l'album.</p>
+    <div id="serate-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px;"></div>
   </div>
 </div>
 
@@ -875,6 +888,38 @@ function showEdizione(ed) {
     btn.style.padding = '10px 24px';
   });
 }
+</script>
+
+<script>
+/* ════════════════════════════════════════════════════════════════
+   FOTO SERATE — per pubblicare un album, incolla il link del Drive
+   nel campo "url" della serata corrispondente. Lasciare "" = "in arrivo".
+   ════════════════════════════════════════════════════════════════ */
+const SERATE_FOTO = [
+  { n:1, label:"1ª Serata", date:"Lun 22 giugno", url:"https://drive.google.com/drive/folders/1a3oYomusn9a0pfr7YtKrehwunSF5IaIS?usp=sharing" },
+  { n:2, label:"2ª Serata", date:"Mer 24 giugno", url:"" },
+  { n:3, label:"3ª Serata", date:"Ven 26 giugno", url:"" },
+  { n:4, label:"4ª Serata", date:"Dom 28 giugno", url:"" },
+  { n:5, label:"5ª Serata", date:"Lun 29 giugno", url:"" },
+  { n:6, label:"6ª Serata", date:"Mer 1 luglio",  url:"" },
+  { n:7, label:"7ª Serata", date:"Lun 6 luglio",  url:"" },
+  { n:8, label:"8ª Serata", date:"Mer 8 luglio",  url:"" },
+];
+(function renderSerateFoto(){
+  const grid = document.getElementById("serate-grid");
+  if (!grid) return;
+  grid.innerHTML = SERATE_FOTO.map(s => {
+    const has = s.url && s.url.trim() !== "";
+    const btn = has
+      ? `<a href="${s.url}" target="_blank" rel="noopener" class="btn btn-primary" style="background:linear-gradient(135deg,#FF6B00,#FF8C35);width:100%;text-align:center;">📷 Guarda le foto</a>`
+      : `<span class="btn btn-secondary" style="width:100%;text-align:center;opacity:0.45;cursor:not-allowed;pointer-events:none;">Foto in arrivo</span>`;
+    return `<div style="background:var(--bg2);border:1px solid rgba(255,255,255,0.07);border-radius:4px;padding:22px 20px;display:flex;flex-direction:column;gap:8px;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:1.35rem;letter-spacing:2px;color:var(--orange);">${s.label}</div>
+      <div style="color:var(--gray);font-size:0.85rem;margin-bottom:8px;">${s.date}</div>
+      ${btn}
+    </div>`;
+  }).join("");
+})();
 </script>
 </body>
 </html>
