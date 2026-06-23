@@ -233,9 +233,9 @@ const TEAMS = {
 // "tav": true  → vittoria a tavolino (mostra 6-0 TAV)
 const MATCHES = [
   // GIORNATA 1 — Lun 22/06
-  { g:1, date:"22/06", time:"20:00", home:"A1", away:"A2" /*, hg:0, ag:0 */ },
-  { g:1, date:"22/06", time:"21:00", home:"B1", away:"B2" },
-  { g:1, date:"22/06", time:"22:00", home:"D3", away:"D4" },
+  { g:1, date:"22/06", time:"20:00", home:"A1", away:"A2", hg:1, ag:0 },
+  { g:1, date:"22/06", time:"21:00", home:"B1", away:"B2", hg:2, ag:2 },
+  { g:1, date:"22/06", time:"22:00", home:"D3", away:"D4", hg:3, ag:1 },
   // GIORNATA 2 — Mer 24/06
   { g:2, date:"24/06", time:"20:00", home:"A3", away:"A4" },
   { g:2, date:"24/06", time:"21:00", home:"D1", away:"D2" },
@@ -268,7 +268,15 @@ const MATCHES = [
 
 // MARCATORI — aggiungi { name:"Nome", team:"A1", goals:3 }
 const SCORERS = [
-  // { name:"Mario Rossi", team:"A1", goals:5 },
+  // Giornata 1 — 22/06
+  { name:"M. Scardovelli", team:"A1", goals:1 },
+  { name:"M. Pabla", team:"B1", goals:1 },
+  { name:"V. Michael", team:"B2", goals:1 },
+  { name:"A. Amura", team:"B2", goals:1 },
+  { name:"M. Faraci", team:"D3", goals:1 },
+  { name:"F. Equabile", team:"D3", goals:1 },
+  { name:"A. Saturno", team:"D3", goals:1 },
+  { name:"F. Mantovani", team:"D4", goals:1 },
 ];
 
 /* ════════════════════════════════════════════════════════════════
