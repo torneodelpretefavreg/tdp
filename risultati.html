@@ -246,9 +246,12 @@ const MATCHES = [
   { g:1, date:"22/06", time:"22:00", home:"D3", away:"D4", hg:3, ag:1,
     goals:[ {p:"M. Faraci", side:"h", min:20}, {p:"F. Equabile", side:"h", min:20}, {p:"A. Saturno", side:"h", min:21}, {p:"F. Mantovani", side:"a", min:27} ] },
   // GIORNATA 2 — Mer 24/06
-  { g:2, date:"24/06", time:"20:00", home:"A3", away:"A4" },
-  { g:2, date:"24/06", time:"21:00", home:"D1", away:"D2" },
-  { g:2, date:"24/06", time:"22:00", home:"B3", away:"B4" },
+  { g:2, date:"24/06", time:"20:00", home:"A3", away:"A4", hg:3, ag:2,
+    goals:[ {p:"D. Minelli", side:"h", min:2}, {p:"A. Amura", side:"a", min:3}, {p:"G. Taurino", side:"h", min:8}, {p:"D. Minelli", side:"h", min:25}, {p:"A. Amura", side:"a", min:33} ] },
+  { g:2, date:"24/06", time:"21:00", home:"D1", away:"D2", hg:4, ag:2,
+    goals:[ {p:"G. Ranucci", side:"h", min:6}, {p:"A. Renalto", side:"a", min:12}, {p:"M. D. Geso", side:"h", min:17}, {p:"D. Setti", side:"h", min:23}, {p:"E. Acierno", side:"a", min:32}, {p:"D. Setti", side:"h", min:40} ] },
+  { g:2, date:"24/06", time:"22:00", home:"B3", away:"B4", hg:4, ag:2,
+    goals:[ {p:"M. D. Lorenzo", side:"a", min:6}, {p:"M. Cottafava", side:"h", min:6}, {p:"Autogol", side:"h", min:12, og:true}, {p:"D. Gatti", side:"a", min:21}, {p:"A. D. Marzo", side:"h", min:30}, {p:"M. Cottafava", side:"h", min:34} ] },
   // GIORNATA 3 — Ven 26/06
   { g:3, date:"26/06", time:"20:00", home:"B1", away:"B3" },
   { g:3, date:"26/06", time:"21:00", home:"A1", away:"A4" },
@@ -286,6 +289,19 @@ const SCORERS = [
   { name:"F. Equabile", team:"D3", goals:1 },
   { name:"A. Saturno", team:"D3", goals:1 },
   { name:"F. Mantovani", team:"D4", goals:1 },
+  // Giornata 2 — 24/06
+  { name:"D. Minelli", team:"A3", goals:2 },
+  { name:"G. Taurino", team:"A3", goals:1 },
+  { name:"A. Amura", team:"A4", goals:2 },
+  { name:"D. Setti", team:"D1", goals:2 },
+  { name:"M. D. Geso", team:"D1", goals:1 },
+  { name:"G. Ranucci", team:"D1", goals:1 },
+  { name:"A. Renalto", team:"D2", goals:1 },
+  { name:"E. Acierno", team:"D2", goals:1 },
+  { name:"M. Cottafava", team:"B3", goals:2 },
+  { name:"A. D. Marzo", team:"B3", goals:1 },
+  { name:"M. D. Lorenzo", team:"B4", goals:1 },
+  { name:"D. Gatti", team:"B4", goals:1 },
 ];
 
 /* ════════════════════════════════════════════════════════════════
