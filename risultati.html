@@ -253,9 +253,11 @@ const MATCHES = [
   { g:2, date:"24/06", time:"22:00", home:"B3", away:"B4", hg:4, ag:2,
     goals:[ {p:"M. D. Lorenzo", side:"a", min:6}, {p:"M. Cottafava", side:"h", min:6}, {p:"Autogol", side:"h", min:12, og:true}, {p:"D. Gatti", side:"a", min:21}, {p:"A. D. Marzo", side:"h", min:30}, {p:"M. Cottafava", side:"h", min:34} ] },
   // GIORNATA 3 — Ven 26/06
-  { g:3, date:"26/06", time:"20:00", home:"B1", away:"B3" },
-  { g:3, date:"26/06", time:"21:00", home:"A1", away:"A4" },
-  { g:3, date:"26/06", time:"22:00", home:"D2", away:"D3" },
+  { g:3, date:"26/06", time:"20:00", home:"B1", away:"B3", hg:3, ag:1,
+    goals:[ {p:"S. Stabile", side:"h", min:7}, {p:"S. Stabile", side:"h", min:10}, {p:"M. Pabla", side:"h", min:12}, {p:"L. Terzi", side:"a", min:40} ] },
+  { g:3, date:"26/06", time:"21:00", home:"A1", away:"A4", hg:0, ag:0 },
+  { g:3, date:"26/06", time:"22:00", home:"D2", away:"D3", hg:2, ag:2,
+    goals:[ {p:"F. Equabile", side:"a", min:1}, {p:"D. Panico", side:"h", min:2}, {p:"D. Panico", side:"h", min:15}, {p:"F. Equabile", side:"a", min:31} ] },
   // GIORNATA 4 — Dom 28/06
   { g:4, date:"28/06", time:"20:00", home:"C1", away:"C4" },
   { g:4, date:"28/06", time:"21:00", home:"C2", away:"C3" },
@@ -282,11 +284,11 @@ const MATCHES = [
 const SCORERS = [
   // Giornata 1 — 22/06
   { name:"M. Scardovelli", team:"A1", goals:1 },
-  { name:"M. Pabla", team:"B1", goals:1 },
+  { name:"M. Pabla", team:"B1", goals:2 },
   { name:"V. Michael", team:"B2", goals:1 },
   { name:"A. Amura", team:"B2", goals:1 },
   { name:"M. Faraci", team:"D3", goals:1 },
-  { name:"F. Equabile", team:"D3", goals:1 },
+  { name:"F. Equabile", team:"D3", goals:3 },
   { name:"A. Saturno", team:"D3", goals:1 },
   { name:"F. Mantovani", team:"D4", goals:1 },
   // Giornata 2 — 24/06
@@ -302,6 +304,10 @@ const SCORERS = [
   { name:"A. D. Marzo", team:"B3", goals:1 },
   { name:"M. D. Lorenzo", team:"B4", goals:1 },
   { name:"D. Gatti", team:"B4", goals:1 },
+  // Giornata 3 — 26/06
+  { name:"S. Stabile", team:"B1", goals:2 },
+  { name:"D. Panico", team:"D2", goals:2 },
+  { name:"L. Terzi", team:"B3", goals:1 },
 ];
 
 /* ════════════════════════════════════════════════════════════════
