@@ -259,9 +259,11 @@ const MATCHES = [
   { g:3, date:"26/06", time:"22:00", home:"D2", away:"D3", hg:2, ag:2,
     goals:[ {p:"F. Equabile", side:"a", min:1}, {p:"D. Panico", side:"h", min:2}, {p:"D. Panico", side:"h", min:15}, {p:"F. Equabile", side:"a", min:31} ] },
   // GIORNATA 4 — Dom 28/06
-  { g:4, date:"28/06", time:"20:00", home:"C1", away:"C4" },
-  { g:4, date:"28/06", time:"21:00", home:"C2", away:"C3" },
-  { g:4, date:"28/06", time:"22:00", home:"B2", away:"B4" },
+  { g:4, date:"28/06", time:"20:00", home:"C1", away:"C4", tav:true },
+  { g:4, date:"28/06", time:"21:00", home:"C2", away:"C3", hg:5, ag:2,
+    goals:[ {p:"S. Incannella", side:"h", min:8}, {p:"A. Bigliardi", side:"h", min:12}, {p:"M. D. Fazio", side:"a", min:16}, {p:"M. Previato", side:"h", min:32}, {p:"M. Previato", side:"h", min:35}, {p:"M. Toni", side:"h", min:40}, {p:"G. Lanza", side:"a", min:40} ] },
+  { g:4, date:"28/06", time:"22:00", home:"B2", away:"B4", hg:2, ag:2,
+    goals:[ {p:"M. Anacleto", side:"h", min:20}, {p:"D. Gatti", side:"a", min:24}, {p:"M. Anacleto", side:"h", min:29}, {p:"F. Chierici", side:"a", min:40} ] },
   // GIORNATA 5 — Lun 29/06
   { g:5, date:"29/06", time:"20:00", home:"A2", away:"A4" },
   { g:5, date:"29/06", time:"21:00", home:"C1", away:"C3" },
@@ -303,11 +305,20 @@ const SCORERS = [
   { name:"M. Cottafava", team:"B3", goals:2 },
   { name:"A. D. Marzo", team:"B3", goals:1 },
   { name:"M. D. Lorenzo", team:"B4", goals:1 },
-  { name:"D. Gatti", team:"B4", goals:1 },
+  { name:"D. Gatti", team:"B4", goals:2 },
   // Giornata 3 — 26/06
   { name:"S. Stabile", team:"B1", goals:2 },
   { name:"D. Panico", team:"D2", goals:2 },
   { name:"L. Terzi", team:"B3", goals:1 },
+  // Giornata 4 — 28/06
+  { name:"M. Anacleto", team:"B2", goals:2 },
+  { name:"F. Chierici", team:"B4", goals:1 },
+  { name:"S. Incannella", team:"C2", goals:1 },
+  { name:"A. Bigliardi", team:"C2", goals:1 },
+  { name:"M. Previato", team:"C2", goals:2 },
+  { name:"M. Toni", team:"C2", goals:1 },
+  { name:"M. D. Fazio", team:"C3", goals:1 },
+  { name:"G. Lanza", team:"C3", goals:1 },
 ];
 
 /* ════════════════════════════════════════════════════════════════
