@@ -446,9 +446,36 @@ function computeStandings(girone) {
   });
   Object.values(table).forEach(t => t.DR = t.GF - t.GS);
 
-  return Object.values(table).sort((a,b) =>
-    b.PT-a.PT || b.DR-a.DR || b.GF-a.GF || a.name.localeCompare(b.name)
-  );
+  // Mini-classifica (avulsa) sui soli scontri diretti tra un gruppo di squadre
+  function miniStats(codes) {
+    const set = new Set(codes);
+    const mini = {};
+    codes.forEach(c => mini[c] = { PT:0, DR:0, GF:0 });
+    MATCHES.forEach(m => {
+      if (gironeOf(m.home) !== girone || !isPlayed(m)) return;
+      if (!set.has(m.home) || !set.has(m.away)) return;
+      let hg, ag; if (m.tav) { hg=6; ag=0; } else { hg=m.hg; ag=m.ag; }
+      const H = mini[m.home], A = mini[m.away];
+      H.GF+=hg; A.GF+=ag; H.DR+=(hg-ag); A.DR+=(ag-hg);
+      if (hg>ag) H.PT+=3; else if (ag>hg) A.PT+=3; else { H.PT++; A.PT++; }
+    });
+    return mini;
+  }
+
+  // Ordine: 1) punti  2) punti scontri diretti  3) diff. reti scontri diretti
+  //         4) reti fatte scontri diretti  5) diff. reti generale  6) reti fatte  7) nome
+  return Object.values(table).sort((a, b) => {
+    if (b.PT !== a.PT) return b.PT - a.PT;
+    const tied = Object.values(table).filter(t => t.PT === a.PT).map(t => t.code);
+    if (tied.length >= 2) {
+      const mini = miniStats(tied);
+      const ma = mini[a.code], mb = mini[b.code];
+      if (mb.PT !== ma.PT) return mb.PT - ma.PT;
+      if (mb.DR !== ma.DR) return mb.DR - ma.DR;
+      if (mb.GF !== ma.GF) return mb.GF - ma.GF;
+    }
+    return b.DR - a.DR || b.GF - a.GF || a.name.localeCompare(b.name);
+  });
 }
 
 function renderStandings() {
