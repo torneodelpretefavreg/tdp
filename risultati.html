@@ -269,14 +269,17 @@ const MATCHES = [
     goals:[ {p:"M. Nasi", side:"h", min:10}, {p:"D. Barbieri", side:"h", min:11}, {p:"M. Nasi", side:"h", min:15}, {p:"N. Gualdi", side:"h", min:25}, {p:"N. Bolognesi", side:"h", min:37} ] },
   { g:5, date:"29/06", time:"22:00", home:"A1", away:"A3", hg:1, ag:2,
     goals:[ {p:"D. Minelli", side:"a", min:14}, {p:"G. Taurino", side:"a", min:24}, {p:"T. Levani", side:"h", min:37} ] },
-  // GIORNATA 6 — Mer 01/07
-  { g:6, date:"01/07", time:"20:00", home:"C3", away:"C4" },
-  { g:6, date:"01/07", time:"21:00", home:"B1", away:"B4" },
-  { g:6, date:"01/07", time:"22:00", home:"D2", away:"D4" },
-  // GIORNATA 7 — Lun 06/07
-  { g:7, date:"06/07", time:"20:00", home:"A2", away:"A3" },
-  { g:7, date:"06/07", time:"21:00", home:"D1", away:"D4" },
-  { g:7, date:"06/07", time:"22:00", home:"C2", away:"C4" },
+  // GIORNATA 6 — Lun 06/07
+  { g:6, date:"06/07", time:"20:00", home:"A2", away:"A3", hg:2, ag:2,
+    goals:[ {p:"H. B. Saad", side:"h", min:8}, {p:"E. Alberini", side:"h", min:20}, {p:"B. E. Meskaoui", side:"a", min:25}, {p:"M. Suarato", side:"a", min:39} ] },
+  { g:6, date:"06/07", time:"21:00", home:"D1", away:"D4", hg:3, ag:5,
+    goals:[ {p:"V. Buhusanu", side:"a", min:12}, {p:"F. Mantovani", side:"a", min:13}, {p:"M. Lanfredi", side:"a", min:19}, {p:"M. Parisi", side:"h", min:20}, {p:"V. Buhusanu", side:"a", min:24}, {p:"G. Ranucci", side:"h", min:26}, {p:"F. Mantovani", side:"a", min:40}, {p:"M. D. Gennaro", side:"h", min:40} ] },
+  { g:6, date:"06/07", time:"22:00", home:"C3", away:"C4", hg:3, ag:4,
+    goals:[ {p:"A. Gentile", side:"h", min:4}, {p:"M. Messere", side:"a", min:4}, {p:"Autogol", side:"h", min:11, og:true}, {p:"A. Gentile", side:"h", min:15}, {p:"N. Esposito", side:"a", min:20}, {p:"N. Esposito", side:"a", min:25}, {p:"N. Esposito", side:"a", min:29} ] },
+  // GIORNATA 7 — da definire (partite rinviate/da recuperare)
+  { g:7, date:"da definire", time:"20:00", home:"B1", away:"B4" },
+  { g:7, date:"da definire", time:"21:00", home:"D2", away:"D4" },
+  { g:7, date:"da definire", time:"22:00", home:"C2", away:"C4" },
   // GIORNATA 8 — Mer 08/07
   { g:8, date:"08/07", time:"20:00", home:"D1", away:"D3" },
   { g:8, date:"08/07", time:"21:00", home:"B2", away:"B3" },
@@ -293,14 +296,14 @@ const SCORERS = [
   { name:"M. Faraci", team:"D3", goals:1 },
   { name:"F. Equabile", team:"D3", goals:3 },
   { name:"A. Saturno", team:"D3", goals:1 },
-  { name:"F. Mantovani", team:"D4", goals:1 },
+  { name:"F. Mantovani", team:"D4", goals:3 },
   // Giornata 2 — 24/06
   { name:"D. Minelli", team:"A3", goals:3 },
   { name:"G. Taurino", team:"A3", goals:2 },
   { name:"A. Amura", team:"A4", goals:3 },
   { name:"D. Setti", team:"D1", goals:2 },
   { name:"M. D. Geso", team:"D1", goals:1 },
-  { name:"G. Ranucci", team:"D1", goals:1 },
+  { name:"G. Ranucci", team:"D1", goals:2 },
   { name:"A. Renalto", team:"D2", goals:1 },
   { name:"E. Acierno", team:"D2", goals:1 },
   { name:"M. Cottafava", team:"B3", goals:2 },
@@ -312,9 +315,9 @@ const SCORERS = [
   { name:"D. Panico", team:"D2", goals:2 },
   { name:"L. Terzi", team:"B3", goals:1 },
   // Giornata 5 — 29/06
-  { name:"H. B. Saad", team:"A2", goals:2 },
+  { name:"H. B. Saad", team:"A2", goals:3 },
   { name:"A. Hassouni", team:"A2", goals:1 },
-  { name:"E. Alberini", team:"A2", goals:1 },
+  { name:"E. Alberini", team:"A2", goals:2 },
   { name:"R. Nicolini", team:"A2", goals:1 },
   { name:"F. Carnevali", team:"A4", goals:3 },
   { name:"M. Nasi", team:"C1", goals:2 },
@@ -322,6 +325,16 @@ const SCORERS = [
   { name:"N. Gualdi", team:"C1", goals:1 },
   { name:"N. Bolognesi", team:"C1", goals:1 },
   { name:"T. Levani", team:"A1", goals:1 },
+  // Giornata 6 — 06/07
+  { name:"M. Suarato", team:"A3", goals:1 },
+  { name:"B. E. Meskaoui", team:"A3", goals:1 },
+  { name:"M. Parisi", team:"D1", goals:1 },
+  { name:"M. D. Gennaro", team:"D1", goals:1 },
+  { name:"V. Buhusanu", team:"D4", goals:2 },
+  { name:"M. Lanfredi", team:"D4", goals:1 },
+  { name:"A. Gentile", team:"C3", goals:2 },
+  { name:"M. Messere", team:"C4", goals:1 },
+  { name:"N. Esposito", team:"C4", goals:3 },
 ];
 
 /* ════════════════════════════════════════════════════════════════
