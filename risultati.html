@@ -276,14 +276,17 @@ const MATCHES = [
     goals:[ {p:"V. Buhusanu", side:"a", min:12}, {p:"F. Mantovani", side:"a", min:13}, {p:"M. Lanfredi", side:"a", min:19}, {p:"M. Parisi", side:"h", min:20}, {p:"V. Buhusanu", side:"a", min:24}, {p:"G. Ranucci", side:"h", min:26}, {p:"F. Mantovani", side:"a", min:40}, {p:"M. D. Gennaro", side:"h", min:40} ] },
   { g:6, date:"06/07", time:"22:00", home:"C3", away:"C4", hg:3, ag:4,
     goals:[ {p:"A. Gentile", side:"h", min:4}, {p:"M. Messere", side:"a", min:4}, {p:"Autogol", side:"h", min:11, og:true}, {p:"A. Gentile", side:"h", min:15}, {p:"N. Esposito", side:"a", min:20}, {p:"N. Esposito", side:"a", min:25}, {p:"N. Esposito", side:"a", min:29} ] },
-  // GIORNATA 7 — da definire (partite rinviate/da recuperare)
-  { g:7, date:"da definire", time:"20:00", home:"B1", away:"B4" },
-  { g:7, date:"da definire", time:"21:00", home:"D2", away:"D4" },
-  { g:7, date:"da definire", time:"22:00", home:"C2", away:"C4" },
-  // GIORNATA 8 — Mer 08/07
-  { g:8, date:"08/07", time:"20:00", home:"D1", away:"D3" },
-  { g:8, date:"08/07", time:"21:00", home:"B2", away:"B3" },
-  { g:8, date:"08/07", time:"22:00", home:"C2", away:"C1" },
+  // GIORNATA 7 — Mer 08/07
+  { g:7, date:"08/07", time:"20:00", home:"D1", away:"D3", hg:2, ag:2,
+    goals:[ {p:"A. Saturno", side:"a", min:17}, {p:"M. D. Gennaro", side:"h", min:23}, {p:"D. Setti", side:"h", min:38}, {p:"F. Demeca", side:"a", min:38} ] },
+  { g:7, date:"08/07", time:"21:00", home:"B2", away:"B3", hg:1, ag:4,
+    goals:[ {p:"M. Anacleto", side:"h", min:21}, {p:"M. Cottafava", side:"a", min:23}, {p:"A. Vezzani", side:"a", min:28}, {p:"D. D. Marani", side:"a", min:33}, {p:"A. Vezzani", side:"a", min:34} ] },
+  { g:7, date:"08/07", time:"22:00", home:"C2", away:"C1", hg:0, ag:1,
+    goals:[ {p:"S. Incannella", side:"a", min:24} ] },
+  // GIORNATA 8 — da definire (partite rinviate/da recuperare)
+  { g:8, date:"da definire", time:"20:00", home:"B1", away:"B4" },
+  { g:8, date:"da definire", time:"21:00", home:"D2", away:"D4" },
+  { g:8, date:"da definire", time:"22:00", home:"C2", away:"C4" },
 ];
 
 // MARCATORI — aggiungi { name:"Nome", team:"A1", goals:3 }
@@ -295,18 +298,18 @@ const SCORERS = [
   { name:"A. Amura", team:"B2", goals:1 },
   { name:"M. Faraci", team:"D3", goals:1 },
   { name:"F. Equabile", team:"D3", goals:3 },
-  { name:"A. Saturno", team:"D3", goals:1 },
+  { name:"A. Saturno", team:"D3", goals:2 },
   { name:"F. Mantovani", team:"D4", goals:3 },
   // Giornata 2 — 24/06
   { name:"D. Minelli", team:"A3", goals:3 },
   { name:"G. Taurino", team:"A3", goals:2 },
   { name:"A. Amura", team:"A4", goals:3 },
-  { name:"D. Setti", team:"D1", goals:2 },
+  { name:"D. Setti", team:"D1", goals:3 },
   { name:"M. D. Geso", team:"D1", goals:1 },
   { name:"G. Ranucci", team:"D1", goals:2 },
   { name:"A. Renalto", team:"D2", goals:1 },
   { name:"E. Acierno", team:"D2", goals:1 },
-  { name:"M. Cottafava", team:"B3", goals:2 },
+  { name:"M. Cottafava", team:"B3", goals:3 },
   { name:"A. D. Marzo", team:"B3", goals:1 },
   { name:"M. D. Lorenzo", team:"B4", goals:1 },
   { name:"D. Gatti", team:"B4", goals:1 },
@@ -329,12 +332,18 @@ const SCORERS = [
   { name:"M. Suarato", team:"A3", goals:1 },
   { name:"B. E. Meskaoui", team:"A3", goals:1 },
   { name:"M. Parisi", team:"D1", goals:1 },
-  { name:"M. D. Gennaro", team:"D1", goals:1 },
+  { name:"M. D. Gennaro", team:"D1", goals:2 },
   { name:"V. Buhusanu", team:"D4", goals:2 },
   { name:"M. Lanfredi", team:"D4", goals:1 },
   { name:"A. Gentile", team:"C3", goals:2 },
   { name:"M. Messere", team:"C4", goals:1 },
   { name:"N. Esposito", team:"C4", goals:3 },
+  // Giornata 7 — 08/07
+  { name:"F. Demeca", team:"D3", goals:1 },
+  { name:"M. Anacleto", team:"B2", goals:1 },
+  { name:"A. Vezzani", team:"B3", goals:2 },
+  { name:"D. D. Marani", team:"B3", goals:1 },
+  { name:"S. Incannella", team:"C1", goals:1 },
 ];
 
 /* ════════════════════════════════════════════════════════════════
