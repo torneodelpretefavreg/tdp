@@ -281,12 +281,15 @@ const MATCHES = [
     goals:[ {p:"A. Saturno", side:"a", min:17}, {p:"M. D. Gennaro", side:"h", min:23}, {p:"D. Setti", side:"h", min:38}, {p:"F. Demeca", side:"a", min:38} ] },
   { g:7, date:"08/07", time:"21:00", home:"B2", away:"B3", hg:1, ag:4,
     goals:[ {p:"M. Anacleto", side:"h", min:21}, {p:"M. Cottafava", side:"a", min:23}, {p:"A. Vezzani", side:"a", min:28}, {p:"D. D. Marani", side:"a", min:33}, {p:"A. Vezzani", side:"a", min:34} ] },
-  { g:7, date:"08/07", time:"22:00", home:"C2", away:"C1", hg:0, ag:1,
+  { g:7, date:"08/07", time:"22:00", home:"C1", away:"C2", hg:0, ag:1,
     goals:[ {p:"S. Incannella", side:"a", min:24} ] },
   // GIORNATA 8 — da definire (partite rinviate/da recuperare)
-  { g:8, date:"da definire", time:"20:00", home:"B1", away:"B4" },
-  { g:8, date:"da definire", time:"21:00", home:"D2", away:"D4" },
-  { g:8, date:"da definire", time:"22:00", home:"C2", away:"C4" },
+  { g:8, date:"10/07", time:"22:00", home:"B1", away:"B4", hg:4, ag:1,
+    goals:[ {p:"Autogol", side:"h", min:8, og:true}, {p:"S. Stabile", side:"h", min:11}, {p:"L. Nocera", side:"h", min:25}, {p:"N. Lombardini", side:"h", min:32}, {p:"M. Silingardi", side:"a", min:36} ] },
+  { g:8, date:"10/07", time:"21:00", home:"D2", away:"D4", hg:0, ag:5,
+    goals:[ {p:"F. Mantovani", side:"a", min:15}, {p:"V. Buhusanu", side:"a", min:30}, {p:"V. Buhusanu", side:"a", min:32}, {p:"M. Lanfredi", side:"a", min:38}, {p:"F. Mantovani", side:"a", min:40} ] },
+  { g:8, date:"10/07", time:"20:00", home:"C2", away:"C4", hg:1, ag:3,
+    goals:[ {p:"M. Messere", side:"a", min:21}, {p:"F. Barbieri", side:"a", min:22}, {p:"A. Vezzani", side:"a", min:24}, {p:"M. Toni", side:"h", min:39} ] },
 ];
 
 // MARCATORI — aggiungi { name:"Nome", team:"A1", goals:3 }
@@ -299,7 +302,7 @@ const SCORERS = [
   { name:"M. Faraci", team:"D3", goals:1 },
   { name:"F. Equabile", team:"D3", goals:3 },
   { name:"A. Saturno", team:"D3", goals:2 },
-  { name:"F. Mantovani", team:"D4", goals:3 },
+  { name:"F. Mantovani", team:"D4", goals:5 },
   // Giornata 2 — 24/06
   { name:"D. Minelli", team:"A3", goals:3 },
   { name:"G. Taurino", team:"A3", goals:2 },
@@ -314,7 +317,7 @@ const SCORERS = [
   { name:"M. D. Lorenzo", team:"B4", goals:1 },
   { name:"D. Gatti", team:"B4", goals:1 },
   // Giornata 3 — 26/06
-  { name:"S. Stabile", team:"B1", goals:2 },
+  { name:"S. Stabile", team:"B1", goals:3 },
   { name:"D. Panico", team:"D2", goals:2 },
   { name:"L. Terzi", team:"B3", goals:1 },
   // Giornata 5 — 29/06
@@ -333,17 +336,24 @@ const SCORERS = [
   { name:"B. E. Meskaoui", team:"A3", goals:1 },
   { name:"M. Parisi", team:"D1", goals:1 },
   { name:"M. D. Gennaro", team:"D1", goals:2 },
-  { name:"V. Buhusanu", team:"D4", goals:2 },
-  { name:"M. Lanfredi", team:"D4", goals:1 },
+  { name:"V. Buhusanu", team:"D4", goals:4 },
+  { name:"M. Lanfredi", team:"D4", goals:2 },
   { name:"A. Gentile", team:"C3", goals:2 },
-  { name:"M. Messere", team:"C4", goals:1 },
+  { name:"M. Messere", team:"C4", goals:2 },
   { name:"N. Esposito", team:"C4", goals:3 },
   // Giornata 7 — 08/07
   { name:"F. Demeca", team:"D3", goals:1 },
   { name:"M. Anacleto", team:"B2", goals:1 },
   { name:"A. Vezzani", team:"B3", goals:2 },
   { name:"D. D. Marani", team:"B3", goals:1 },
-  { name:"S. Incannella", team:"C1", goals:1 },
+  { name:"S. Incannella", team:"C2", goals:1 },
+  // Giornata 8 — 10/07
+  { name:"L. Nocera", team:"B1", goals:1 },
+  { name:"N. Lombardini", team:"B1", goals:1 },
+  { name:"M. Silingardi", team:"B4", goals:1 },
+  { name:"M. Toni", team:"C2", goals:1 },
+  { name:"F. Barbieri", team:"C4", goals:1 },
+  { name:"A. Vezzani", team:"C4", goals:1 },
 ];
 
 /* ════════════════════════════════════════════════════════════════
