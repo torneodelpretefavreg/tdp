@@ -252,13 +252,19 @@
     .info-banner { flex-direction: column; gap: 16px; }
   }
 
+
+  /* ─── LOGO / HOME ─── */
+  .brand { display:inline-flex; align-items:center; gap:10px; text-decoration:none; }
+  .brand-mark { height:34px; width:auto; display:block; transition:transform 0.3s ease, filter 0.3s ease; }
+  .brand:hover .brand-mark { transform:rotate(-6deg) scale(1.08); filter:drop-shadow(0 0 8px rgba(255,107,0,0.6)); }
+  @media(max-width:768px){ .brand-mark { height:30px; } .brand { gap:8px; } }
 </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-  <a href="index.html" class="nav-logo">← <span>Futsal</span> Fabbrico</a>
+  <a href="index.html" class="nav-logo brand" aria-label="Home Futsal Fabbrico"><img src="logo.svg" alt="" class="brand-mark"><span style="color:var(--white);white-space:nowrap;"><b style="color:var(--orange);font-weight:inherit;">Futsal</b> Fabbrico</span></a>
   <button class="hamburger" id="hamburger-tdp" onclick="toggleNavTDP()" aria-label="Menu"><span></span><span></span><span></span></button>
   <ul class="nav-links" id="nav-links-tdp">
     <li><a href="#risultati">Risultati</a></li>
@@ -690,7 +696,7 @@ async function formSuccess(e) {
     msg.style.background = 'rgba(255,60,60,0.1)';
     msg.style.border = '1px solid rgba(255,60,60,0.3)';
     msg.style.color = '#FF3C3C';
-    msg.textContent = '❌ Errore nell'invio. Scrivici a torneodelpretefavreg@gmail.com';
+    msg.textContent = "❌ Errore nell'invio. Scrivici a torneodelpretefavreg@gmail.com";
     btn.textContent = '➕ Invia Iscrizione';
     btn.disabled = false;
   }

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="30 50 386 350" role="img" aria-label="Futsal Fabbrico">
+  <defs>
+    <linearGradient id="ffo" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FF8C35"/>
+      <stop offset="1" stop-color="#FF5A00"/>
+    </linearGradient>
+    <linearGradient id="ffw" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#D9D9D9"/>
+    </linearGradient>
+  </defs>
+  <!-- F sinistra -->
+  <path fill="url(#ffw)" d="M246 56 L214 110 L38 110 L66 156 L167 156 L167 183 L78 183 L106 230 L167 230 L167 303 L212 357 L218 240 L182 240 Z"/>
+  <!-- F destra -->
+  <path fill="url(#ffo)" d="M408 110 L247 110 L240 201 L271 201 L214 393 L279 303 L279 230 L340 230 L368 183 L279 183 L279 156 L380 156 Z"/>
+</svg>

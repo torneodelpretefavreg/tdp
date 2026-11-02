@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 <title>Futsal Fabbrico & Torneo del Prete</title>
+<link rel="icon" type="image/svg+xml" href="logo.svg">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700;900&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -808,13 +809,19 @@
     .quick a { justify-content:center; padding:11px 8px; font-size:0.7rem; }
     .quick a.wide { grid-column:1 / -1; }
   }
+
+  /* ─── LOGO / HOME ─── */
+  .brand { display:inline-flex; align-items:center; gap:10px; text-decoration:none; }
+  .brand-mark { height:34px; width:auto; display:block; transition:transform 0.3s ease, filter 0.3s ease; }
+  .brand:hover .brand-mark { transform:rotate(-6deg) scale(1.08); filter:drop-shadow(0 0 8px rgba(255,107,0,0.6)); }
+  @media(max-width:768px){ .brand-mark { height:30px; } .brand { gap:8px; } }
 </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">Futsal <span>Fabbrico</span></div>
+  <a href="index.html" class="nav-logo brand" aria-label="Home Futsal Fabbrico"><img src="logo.svg" alt="" class="brand-mark"><span style="color:var(--white);white-space:nowrap;"><b style="color:var(--orange);font-weight:inherit;">Futsal</b> Fabbrico</span></a>
   <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menu"><span></span><span></span><span></span></button>
   <ul class="nav-links" id="nav-links">
     <li><a href="#home" class="active">Home</a></li>
