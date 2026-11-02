@@ -19,6 +19,7 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   html { scroll-behavior: smooth; }
+  [id] { scroll-margin-top: 72px; }
 
   body {
     background: var(--black);
@@ -28,7 +29,7 @@
   }
 
   /* ─── NAV ─── */
-  nav {
+  nav:not(.quick) {
     position: fixed;
     top: 0; left: 0; right: 0;
     z-index: 100;
@@ -190,7 +191,7 @@
 
   /* ─── SECTIONS ─── */
   section {
-    padding: 100px 40px;
+    padding: 64px 40px;
     max-width: 1200px;
     margin: 0 auto;
   }
@@ -198,7 +199,7 @@
   .section-full {
     max-width: 100%;
     background: var(--dark2);
-    padding: 100px 0;
+    padding: 64px 0;
   }
 
   .section-full-inner {
@@ -220,7 +221,7 @@
     font-family: 'Bebas Neue', sans-serif;
     font-size: clamp(2.5rem, 5vw, 4rem);
     letter-spacing: 2px;
-    margin-bottom: 48px;
+    margin-bottom: 32px;
     line-height: 1;
   }
 
@@ -621,7 +622,7 @@
     * { box-sizing: border-box; }
 
     /* NAV */
-    nav { padding: 0 16px; }
+    nav:not(.quick) { padding: 0 16px; }
     .hamburger { display: flex; }
     .nav-links {
       display: none !important;
@@ -643,9 +644,14 @@
     .hero-btns a { text-align: center; width: 100%; }
 
     /* SECTIONS */
-    section { padding: 50px 16px; }
-    .section-full-inner { padding: 50px 16px !important; }
-    .section-title { font-size: clamp(2rem, 8vw, 3rem); }
+    section { padding: 36px 16px; }
+    .section-full { padding: 0 !important; }
+    .section-full-inner { padding: 36px 16px !important; }
+    .section-title { font-size: clamp(2rem, 8vw, 3rem); margin-bottom: 22px; }
+    #tdp { padding: 40px 0 !important; }
+    .st-sub { margin: 36px 0 12px; }
+    .role-block { margin-bottom: 24px; }
+    .st-intro { margin: -8px 0 20px; }
 
     /* CARDS */
     .cards-grid { grid-template-columns: 1fr !important; }
@@ -710,7 +716,7 @@
   .cal-res.win { color:#00C864; } .cal-res.loss { color:#FF3C3C; } .cal-res.draw { color:#FFC800; }
   .cal-res.todo { font-family:'Barlow',sans-serif; font-size:0.72rem; color:var(--gray); letter-spacing:1px; text-transform:uppercase; }
 
-  .st-sub { font-family:'Bebas Neue',sans-serif; font-size:1.5rem; letter-spacing:3px; color:var(--orange); margin:56px 0 16px; }
+  .st-sub { font-family:'Bebas Neue',sans-serif; font-size:1.5rem; letter-spacing:3px; color:var(--orange); margin:44px 0 14px; }
   .st-sub-note { font-family:'Barlow',sans-serif; font-size:0.72rem; color:var(--gray); letter-spacing:1px; margin-left:8px; text-transform:uppercase; }
   .st-table tr:nth-child(1) td { color:inherit; font-weight:inherit; }
   .st-table tr.us td { background:rgba(255,107,0,0.1); color:var(--orange); font-weight:700; }
@@ -771,6 +777,17 @@
 
   .hero-next { margin:-24px 0 32px; font-size:0.85rem; color:var(--gray); letter-spacing:0.5px; animation: fadeUp 0.6s 0.38s ease both; }
   .hero-next b { color:var(--orange); font-weight:700; }
+  .quick { margin-top:22px; display:flex; flex-wrap:wrap; gap:8px; animation: fadeUp 0.6s 0.6s ease both; }
+  .quick a { display:inline-flex; align-items:center; gap:6px; padding:9px 14px; background:rgba(10,10,10,0.55); backdrop-filter:blur(6px); border:1px solid rgba(255,255,255,0.18); color:var(--white); text-decoration:none; font-size:0.74rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; transition:all 0.2s; }
+  .quick a:hover { border-color:var(--orange); color:var(--orange); }
+  .quick a.past { border-color:rgba(255,107,0,0.5); }
+  .to-top { position:fixed; right:16px; bottom:18px; z-index:90; width:46px; height:46px; display:flex; align-items:center; justify-content:center; background:var(--orange); color:var(--black); font-size:1.2rem; font-weight:900; text-decoration:none; box-shadow:0 6px 20px rgba(0,0,0,0.5); opacity:0; transform:translateY(16px); pointer-events:none; transition:opacity 0.3s, transform 0.3s; }
+  .to-top.show { opacity:1; transform:none; pointer-events:auto; }
+  @media(max-width: 768px) {
+    .quick { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:16px; }
+    .quick a { justify-content:center; padding:11px 8px; font-size:0.7rem; }
+    .quick a.wide { grid-column:1 / -1; }
+  }
 </style>
 </head>
 <body>
@@ -784,7 +801,7 @@
     <li><a href="#stagione">Stagione 26-27</a></li>
     <li><a href="#risultati">Risultati</a></li>
     <li><a href="#rosa">Rosa</a></li>
-    <li><a href="#archivio">Archivio</a></li>
+    <li><a href="#stagione-2526">Stagione 25-26</a></li>
     <li><a href="tdp_early.html">Torneo del Prete ↗</a></li>
     <li><a href="#contatti">Contatti</a></li>
   </ul>
@@ -807,6 +824,15 @@
       <a href="#stagione" class="btn btn-primary">Stagione 26-27</a>
       <a href="tdp_early.html" class="btn btn-primary" style="background:linear-gradient(135deg,#FF6B00,#FF8C35);box-shadow:0 0 24px rgba(255,107,0,0.5);animation:pulse 2s ease-in-out infinite;">🏆 Torneo del Prete ↗</a>
     </div>
+    <nav class="quick" aria-label="Vai a">
+      <a href="#stagione">⚡ Prossima partita</a>
+      <a href="#risultati">📅 Calendario</a>
+      <a href="#classifica">📊 Classifica</a>
+      <a href="#marcatori">⚽ Marcatori</a>
+      <a href="#rosa">👥 Rosa</a>
+      <a href="#contatti">📍 Contatti</a>
+      <a href="#stagione-2526" class="past wide">🗂️ Stagione 2025-26</a>
+    </nav>
   </div>
 </div>
 
@@ -869,7 +895,7 @@
 
 <!-- ARCHIVIO -->
 <div class="section-full" id="archivio" style="background:var(--dark);padding-bottom:0;">
-  <div class="section-full-inner" style="padding-bottom:60px;">
+  <div class="section-full-inner">
     <div class="section-label">// Archivio</div>
     <h2 class="section-title" style="margin-bottom:24px;">Stagioni passate</h2>
     <button onclick="toggleArchivio()" id="btn-toggle-archivio" class="archivio-btn">
@@ -879,6 +905,7 @@
   </div>
 </div>
 <div id="archivio-content" style="display:none;">
+<div id="stagione-2526"></div>
 
 <!-- RISULTATI -->
 <section id="risultati-2526">
@@ -1423,6 +1450,13 @@ const CLASSIFICA = [
   } else els.forEach(el => el.classList.add("in"));
 })();
 
+function apriArchivio() {
+  document.getElementById("archivio-content").style.display = "block";
+  document.getElementById("archivio-arrow").textContent = "▲";
+}
+document.querySelectorAll('a[href="#stagione-2526"]').forEach(a => a.addEventListener("click", apriArchivio));
+if (location.hash === "#stagione-2526") { apriArchivio(); setTimeout(() => document.getElementById("stagione-2526").scrollIntoView(), 50); }
+window.addEventListener("scroll", () => { const t = document.getElementById("to-top"); if (t) t.classList.toggle("show", window.scrollY > 700); }, { passive:true });
 function toggleArchivio() {
   const c = document.getElementById("archivio-content");
   const open = c.style.display === "none";
@@ -1430,5 +1464,6 @@ function toggleArchivio() {
   document.getElementById("archivio-arrow").textContent = open ? "▲" : "▼";
 }
 </script>
+<a href="#home" class="to-top" id="to-top" aria-label="Torna su">↑</a>
 </body>
 </html>
