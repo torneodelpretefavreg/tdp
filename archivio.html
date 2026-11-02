@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+<title>Archivio stagioni — Futsal Fabbrico</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #FF6B00;
+    --orange-light: #FF8C35;
+    --black: #0A0A0A;
+    --dark: #111111;
+    --dark2: #1A1A1A;
+    --white: #F5F5F5;
+    --gray: #888888;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+  [id] { scroll-margin-top: 72px; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Barlow', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav:not(.quick) {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(10,10,10,0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid var(--orange);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    height: 64px;
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    color: var(--orange);
+    letter-spacing: 2px;
+  }
+
+  .nav-logo span { color: var(--white); }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--gray);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--orange); }
+
+  .nav-links a.active { color: var(--white); }
+
+  /* ─── HERO ─── */
+  #home {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 64px;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 60% 40%, rgba(255,107,0,0.18) 0%, transparent 70%),
+      repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 40px,
+        rgba(255,107,0,0.03) 40px,
+        rgba(255,107,0,0.03) 41px
+      );
+  }
+
+  .hero-number {
+    position: absolute;
+    right: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28vw;
+    color: rgba(255,107,0,0.05);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    padding: 0 40px;
+    text-align: left;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    background: var(--orange);
+    color: var(--black);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    margin-bottom: 24px;
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(4rem, 10vw, 8rem);
+    line-height: 0.9;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+  }
+
+  .hero-title .accent { color: var(--orange); }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--gray);
+    font-weight: 500;
+    margin-bottom: 40px;
+    max-width: 480px;
+    line-height: 1.6;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    padding: 14px 32px;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-primary {
+    background: var(--orange);
+    color: var(--black);
+  }
+
+  .btn-primary:hover {
+    background: var(--orange-light);
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--white);
+    border: 2px solid rgba(255,255,255,0.3);
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--orange);
+    color: var(--orange);
+  }
+
+  /* ─── SECTIONS ─── */
+  section {
+    padding: 64px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-full {
+    max-width: 100%;
+    background: var(--dark2);
+    padding: 64px 0;
+  }
+
+  .section-full-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    letter-spacing: 2px;
+    margin-bottom: 32px;
+    line-height: 1;
+  }
+
+  /* ─── NEWS CARDS ─── */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+
+  .card {
+    background: var(--dark2);
+    border: 1px solid rgba(255,255,255,0.07);
+    padding: 32px;
+    position: relative;
+    transition: border-color 0.3s, transform 0.3s;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 0;
+    background: var(--orange);
+    transition: height 0.3s;
+  }
+
+  .card:hover {
+    border-color: rgba(255,107,0,0.3);
+    transform: translateY(-4px);
+  }
+
+  .card:hover::before { height: 100%; }
+
+  .card-date {
+    font-size: 0.75rem;
+    color: var(--orange);
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .card-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  .card-text {
+    color: var(--gray);
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  /* ─── CALENDAR TABLE ─── */
+  .cal-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .cal-table th {
+    background: var(--orange);
+    color: var(--black);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    padding: 14px 20px;
+    text-align: left;
+  }
+
+  .cal-table td {
+    padding: 14px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    font-size: 0.9rem;
+    color: var(--white);
+  }
+
+  .cal-table tr:hover td {
+    background: rgba(255,107,0,0.05);
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 2px;
+  }
+
+  .badge-home { background: rgba(255,107,0,0.2); color: var(--orange); }
+  .badge-away { background: rgba(255,255,255,0.1); color: var(--gray); }
+  .badge-win { background: rgba(0,200,100,0.2); color: #00C864; }
+  .badge-loss { background: rgba(255,60,60,0.2); color: #FF3C3C; }
+  .badge-draw { background: rgba(255,200,0,0.2); color: #FFC800; }
+
+  /* ─── RISULTATI ─── */
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+  }
+
+  .result-card {
+    background: var(--dark2);
+    border: 1px solid rgba(255,255,255,0.07);
+    padding: 24px;
+    text-align: center;
+  }
+
+  .result-teams {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  .result-score {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3rem;
+    color: var(--orange);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .result-meta {
+    font-size: 0.75rem;
+    color: var(--gray);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* ─── TDP SECTION ─── */
+  .tdp-hero {
+    background: linear-gradient(135deg, rgba(255,107,0,0.15) 0%, transparent 60%);
+    border: 1px solid rgba(255,107,0,0.2);
+    padding: 48px;
+    margin-bottom: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tdp-hero::after {
+    content: 'TDP';
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 12rem;
+    color: rgba(255,107,0,0.06);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .tdp-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 24px;
+    margin-top: 32px;
+  }
+
+  .stat-box {
+    text-align: center;
+    padding: 24px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,107,0,0.15);
+  }
+
+  .stat-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3rem;
+    color: var(--orange);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    color: var(--gray);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 6px;
+  }
+
+  /* ─── CLASSIFICA ─── */
+  .standings-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .standings-table th {
+    background: var(--dark);
+    color: var(--gray);
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 12px 16px;
+    text-align: center;
+    border-bottom: 2px solid var(--orange);
+  }
+
+  .standings-table th:first-child { text-align: left; }
+
+  .standings-table td {
+    padding: 12px 16px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 0.9rem;
+  }
+
+  .standings-table td:first-child { text-align: left; }
+
+  .standings-table tr:nth-child(1) td { color: var(--orange); font-weight: 700; }
+
+  .standings-table tr:hover td { background: rgba(255,107,0,0.05); }
+
+  .pos-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    color: var(--gray);
+    margin-right: 12px;
+  }
+
+  .pos-num.first { color: var(--orange); }
+
+  /* ─── CONTATTI ─── */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .contact-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1.1rem;
+  }
+
+  .contact-label {
+    font-size: 0.7rem;
+    color: var(--gray);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .contact-value {
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  .contact-value a {
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .contact-value a:hover { color: var(--orange); }
+
+  .social-links {
+    display: flex;
+    gap: 12px;
+    margin-top: 32px;
+  }
+
+  .social-btn {
+    padding: 12px 20px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .social-btn:hover {
+    background: var(--orange);
+    color: var(--black);
+    border-color: var(--orange);
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--dark);
+    border-top: 2px solid rgba(255,107,0,0.3);
+    padding: 40px;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    color: var(--orange);
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+  }
+
+  .footer-text {
+    color: var(--gray);
+    font-size: 0.85rem;
+  }
+
+  /* ─── DIVIDER ─── */
+  .divider {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    margin: 0;
+  }
+
+  /* ─── MOBILE ─── */
+  /* ─── HAMBURGER ─── */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 8px;
+    background: none;
+    border: none;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--white);
+    transition: all 0.3s;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  
+
+  /* ─── ANIMATE IN ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-tag { animation: fadeUp 0.6s ease both; }
+  .hero-title { animation: fadeUp 0.6s 0.15s ease both; }
+  .hero-sub { animation: fadeUp 0.6s 0.3s ease both; }
+  .hero-btns { animation: fadeUp 0.6s 0.45s ease both; }
+  @keyframes pulse { 0%,100%{box-shadow:0 0 24px rgba(255,107,0,0.5);} 50%{box-shadow:0 0 40px rgba(255,107,0,0.9);} }
+  /* ─── TIMELINE RISULTATI ─── */
+  .tl-row { display:grid; grid-template-columns:90px 1fr auto; align-items:center; gap:16px; padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.05); }
+  .tl-row:hover { background:rgba(255,107,0,0.04); }
+  .tl-jn { font-size:0.7rem; color:var(--gray); letter-spacing:1px; text-transform:uppercase; }
+  .tl-teams { font-weight:600; font-size:0.92rem; }
+  .tl-scorers { font-size:0.75rem; color:var(--gray); margin-top:2px; }
+  .tl-score { font-family:'Bebas Neue',sans-serif; font-size:1.6rem; letter-spacing:1px; min-width:60px; text-align:right; }
+  .tl-score.win { color:#00C864; }
+  .tl-score.draw { color:#FFC800; }
+  .tl-score.loss { color:#FF3C3C; }
+
+  /* ─── LAYOUT FIX MOBILE ─── */
+  html, body {
+    max-width: 100vw;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  * { box-sizing: border-box; }
+  img, table, iframe { max-width: 100%; }
+
+  
+
+  /* ═══════════════════════════════
+     MOBILE RESPONSIVE — UNICO BLOCCO
+     ═══════════════════════════════ */
+  @media(max-width: 768px) {
+    html, body { overflow-x: hidden; max-width: 100vw; }
+    * { box-sizing: border-box; }
+
+    /* NAV */
+    nav:not(.quick) { padding: 0 16px; }
+    .hamburger { display: flex; }
+    .nav-links {
+      display: none !important;
+      position: fixed; top: 64px; left: 0; right: 0;
+      background: rgba(10,10,10,0.98);
+      flex-direction: column !important;
+      gap: 0 !important; z-index: 99;
+      border-bottom: 2px solid var(--orange);
+    }
+    .nav-links.open { display: flex !important; }
+    .nav-links li { border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .nav-links a { display: block; padding: 16px 24px; }
+
+    /* HERO */
+    .hero-number { display: none; }
+    .hero-content { padding: 0 16px; }
+    .hero-title { font-size: clamp(3.5rem, 18vw, 6rem); }
+    .hero-btns { flex-direction: column; gap: 10px; }
+    .hero-btns a { text-align: center; width: 100%; }
+
+    /* SECTIONS */
+    section { padding: 36px 16px; }
+    .section-full { padding: 0 !important; }
+    .section-full-inner { padding: 36px 16px !important; }
+    .section-title { font-size: clamp(2rem, 8vw, 3rem); margin-bottom: 22px; }
+    #tdp { padding: 40px 0 !important; }
+    .st-sub { margin: 36px 0 12px; }
+    .role-block { margin-bottom: 24px; }
+    .st-intro { margin: -8px 0 20px; }
+
+    /* CARDS */
+    .cards-grid { grid-template-columns: 1fr !important; }
+
+    /* TDP SECTION — colonna singola */
+    .tdp-main-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+    .tdp-main-grid > div:last-child { grid-template-columns: 1fr 1fr !important; }
+
+    /* CLASSIFICA */
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .standings-table { font-size: 0.78rem; }
+    .standings-table th, .standings-table td { padding: 8px 6px; }
+
+    /* RISULTATI TIMELINE */
+    .tl-row { grid-template-columns: 48px 1fr auto; font-size: 0.82rem; }
+
+    /* TABS */
+    .tab-btn { padding: 8px 12px; font-size: 0.7rem; }
+
+    /* CONTACTS */
+    .contact-grid { grid-template-columns: 1fr !important; }
+
+    /* TOGGLE BUTTONS */
+    #btn-toggle-risultati, #btn-toggle-marcatori { width: 100%; }
+  }
+
+
+  /* ═══ STAGIONE 2026-27 ═══ */
+  .st-intro { color:var(--gray); font-size:1rem; margin:-12px 0 32px; }
+  .st-intro strong { color:var(--orange); }
+  .match-duo { display:grid; grid-template-columns:1.3fr 1fr; gap:16px; margin-bottom:24px; }
+  .next-card, .last-card { position:relative; overflow:hidden; padding:28px; border:1px solid rgba(255,255,255,0.08); background:var(--black); }
+  .next-card { border-color:rgba(255,107,0,0.45); background:linear-gradient(135deg, rgba(255,107,0,0.16), rgba(255,107,0,0.03) 70%); }
+  .next-card::after { content:'VS'; position:absolute; right:-10px; bottom:-30px; font-family:'Bebas Neue',sans-serif; font-size:9rem; color:rgba(255,107,0,0.07); line-height:1; pointer-events:none; }
+  .mc-label { font-size:0.68rem; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--orange); margin-bottom:14px; display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+  .mc-label .live-dot { width:8px; height:8px; border-radius:50%; background:var(--orange); animation:pulse 2s ease-in-out infinite; }
+  .mc-teams { font-family:'Bebas Neue',sans-serif; font-size:clamp(1.8rem,4.5vw,2.6rem); line-height:0.95; letter-spacing:1px; margin-bottom:16px; position:relative; z-index:1; }
+  .mc-teams .vs { color:var(--orange); font-size:0.6em; margin:0 6px; }
+  .mc-meta { display:flex; gap:18px; flex-wrap:wrap; color:var(--gray); font-size:0.85rem; position:relative; z-index:1; }
+  .mc-meta b { color:var(--white); font-weight:600; }
+  .mc-countdown { margin-top:20px; display:inline-block; padding:8px 16px; border:1px solid rgba(255,107,0,0.5); font-family:'Bebas Neue',sans-serif; letter-spacing:2px; font-size:1.05rem; color:var(--orange); position:relative; z-index:1; }
+  .mc-score { font-family:'Bebas Neue',sans-serif; font-size:4.2rem; line-height:0.9; color:#00C864; margin:4px 0 10px; }
+  .mc-score.loss { color:#FF3C3C; } .mc-score.draw { color:#FFC800; }
+  .mc-scorers { font-size:0.8rem; color:var(--gray); line-height:1.6; }
+  .mc-mvp { margin-top:14px; display:inline-flex; align-items:center; gap:8px; padding:6px 12px; background:rgba(255,107,0,0.12); border:1px solid rgba(255,107,0,0.35); font-size:0.75rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; }
+  .mc-mvp span { color:var(--orange); }
+
+  .st-stats { display:grid; grid-template-columns:repeat(6,1fr); gap:1px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.06); }
+  .st-stat { background:var(--dark2); padding:18px 10px; text-align:center; }
+  .st-stat-n { font-family:'Bebas Neue',sans-serif; font-size:2.2rem; line-height:1; }
+  .st-stat-l { font-size:0.62rem; color:var(--gray); letter-spacing:2px; text-transform:uppercase; margin-top:4px; }
+
+  .cal-row { display:grid; grid-template-columns:70px 1fr auto; align-items:center; gap:14px; padding:14px 12px; border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s; }
+  .cal-row:hover { background:rgba(255,107,0,0.04); }
+  .cal-row.is-next { background:rgba(255,107,0,0.08); border-left:3px solid var(--orange); }
+  .cal-row.is-rest { opacity:0.5; }
+  .cal-g { font-family:'Bebas Neue',sans-serif; font-size:1.3rem; color:var(--orange); line-height:1; }
+  .cal-d { font-size:0.7rem; color:var(--gray); letter-spacing:1px; margin-top:3px; }
+  .cal-opp { font-weight:700; font-size:0.95rem; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+  .cal-sc { font-size:0.75rem; color:var(--gray); margin-top:3px; }
+  .cal-res { font-family:'Bebas Neue',sans-serif; font-size:1.7rem; letter-spacing:1px; text-align:right; min-width:64px; }
+  .cal-res.win { color:#00C864; } .cal-res.loss { color:#FF3C3C; } .cal-res.draw { color:#FFC800; }
+  .cal-res.todo { font-family:'Barlow',sans-serif; font-size:0.72rem; color:var(--gray); letter-spacing:1px; text-transform:uppercase; }
+
+  .st-sub { font-family:'Bebas Neue',sans-serif; font-size:1.5rem; letter-spacing:3px; color:var(--orange); margin:44px 0 14px; }
+  .st-sub-note { font-family:'Barlow',sans-serif; font-size:0.72rem; color:var(--gray); letter-spacing:1px; margin-left:8px; text-transform:uppercase; }
+  .st-table tr:nth-child(1) td { color:inherit; font-weight:inherit; }
+  .st-table tr.us td { background:rgba(255,107,0,0.1); color:var(--orange); font-weight:700; }
+  .st-table td.pt { font-weight:900; }
+
+  .scorer { display:grid; grid-template-columns:36px 1fr auto; align-items:center; gap:14px; padding:12px 16px; background:var(--dark2); border:1px solid rgba(255,255,255,0.06); margin-bottom:8px; transition:border-color 0.2s; }
+  .scorer:hover { border-color:rgba(255,107,0,0.35); }
+  .scorer-pos { font-family:'Bebas Neue',sans-serif; font-size:1.3rem; color:var(--gray); text-align:center; }
+  .scorer-pos.top { color:var(--orange); }
+  .scorer-name { font-weight:600; }
+  .scorer-role { font-size:0.72rem; color:var(--gray); }
+  .scorer-bar { height:3px; background:rgba(255,107,0,0.15); margin-top:6px; }
+  .scorer-bar i { display:block; height:100%; background:var(--orange); }
+  .scorer-g { font-family:'Bebas Neue',sans-serif; font-size:1.6rem; color:var(--orange); }
+  .scorer-g small { font-family:'Barlow',sans-serif; font-size:0.7rem; color:var(--gray); }
+
+  .role-block { margin-bottom:36px; }
+  .role-head { font-size:0.72rem; font-weight:700; letter-spacing:4px; text-transform:uppercase; color:var(--gray); margin-bottom:12px; display:flex; align-items:center; gap:12px; }
+  .role-head::after { content:''; flex:1; height:1px; background:rgba(255,255,255,0.08); }
+  .rosa-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px; }
+  .player { position:relative; overflow:hidden; background:var(--dark2); border:1px solid rgba(255,255,255,0.07); padding:18px 18px 16px; transition:border-color 0.25s, transform 0.25s; }
+  .player:hover { border-color:rgba(255,107,0,0.4); transform:translateY(-3px); }
+  .player::before { content:''; position:absolute; top:0; left:0; width:3px; height:0; background:var(--orange); transition:height 0.3s; }
+  .player:hover::before { height:100%; }
+  .player-first { font-size:0.8rem; color:var(--gray); }
+  .player-last { font-family:'Bebas Neue',sans-serif; font-size:1.55rem; letter-spacing:1px; line-height:1.05; }
+  .player-tags { display:flex; gap:6px; margin-top:10px; flex-wrap:wrap; }
+  .tag { font-size:0.6rem; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; padding:3px 8px; }
+  .tag-new { background:var(--orange); color:var(--black); }
+  .tag-conf { background:rgba(255,255,255,0.08); color:var(--gray); }
+  .tag-coach { background:rgba(0,200,100,0.15); color:#00C864; }
+  .player-goals { position:absolute; top:14px; right:16px; font-family:'Bebas Neue',sans-serif; font-size:1.1rem; color:var(--orange); }
+  .staff-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:12px; }
+  .staff { display:flex; align-items:center; gap:14px; padding:16px 18px; background:var(--dark2); border:1px solid rgba(255,255,255,0.07); }
+  .staff-ico { width:40px; height:40px; background:var(--orange); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:1.1rem; }
+  .staff-role { font-size:0.65rem; color:var(--gray); letter-spacing:2px; text-transform:uppercase; }
+  .staff-name { font-weight:700; }
+
+  .archivio-btn { width:100%; display:flex; justify-content:space-between; align-items:center; gap:16px; padding:20px 24px; background:var(--dark2); border:1px solid rgba(255,255,255,0.1); color:var(--white); font-family:'Barlow',sans-serif; font-size:0.95rem; text-align:left; cursor:pointer; transition:border-color 0.2s; }
+  .archivio-btn:hover { border-color:var(--orange); }
+  .archivio-btn strong { font-family:'Bebas Neue',sans-serif; font-size:1.3rem; letter-spacing:1px; font-weight:400; color:var(--orange); margin-right:6px; }
+
+  /* comparsa allo scroll */
+  .reveal { opacity:0; transform:translateY(24px); transition:opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.in { opacity:1; transform:none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity:1; transform:none; transition:none; } }
+
+  @media(max-width: 768px) {
+    .match-duo { grid-template-columns:1fr; }
+    .next-card, .last-card { padding:22px 18px; }
+    .st-stats { grid-template-columns:repeat(3,1fr); }
+    .cal-row { grid-template-columns:52px 1fr auto; gap:10px; padding:12px 6px; }
+    .rosa-grid { grid-template-columns:1fr 1fr; gap:8px; }
+    .player { padding:14px 12px; }
+    .player-last { font-size:1.25rem; }
+    .archivio-btn { padding:16px; font-size:0.85rem; }
+  }
+
+  .hero-next { margin:-24px 0 32px; font-size:0.85rem; color:var(--gray); letter-spacing:0.5px; animation: fadeUp 0.6s 0.38s ease both; }
+  .hero-next b { color:var(--orange); font-weight:700; }
+  .quick { margin-top:22px; display:flex; flex-wrap:wrap; gap:8px; animation: fadeUp 0.6s 0.6s ease both; }
+  .quick a { display:inline-flex; align-items:center; gap:6px; padding:9px 14px; background:rgba(10,10,10,0.55); backdrop-filter:blur(6px); border:1px solid rgba(255,255,255,0.18); color:var(--white); text-decoration:none; font-size:0.74rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; transition:all 0.2s; }
+  .quick a:hover { border-color:var(--orange); color:var(--orange); }
+  .quick a.past { border-color:rgba(255,107,0,0.5); }
+  .to-top { position:fixed; right:16px; bottom:18px; z-index:90; width:46px; height:46px; display:flex; align-items:center; justify-content:center; background:var(--orange); color:var(--black); font-size:1.2rem; font-weight:900; text-decoration:none; box-shadow:0 6px 20px rgba(0,0,0,0.5); opacity:0; transform:translateY(16px); pointer-events:none; transition:opacity 0.3s, transform 0.3s; }
+  .to-top.show { opacity:1; transform:none; pointer-events:auto; }
+  @media(max-width: 768px) {
+    .quick { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:16px; }
+    .quick a { justify-content:center; padding:11px 8px; font-size:0.7rem; }
+    .quick a.wide { grid-column:1 / -1; }
+  }
+  .arch-hero { padding:120px 40px 24px; max-width:1200px; margin:0 auto; position:relative; }
+  .arch-hero::after { content:'25/26'; position:absolute; right:20px; top:70px; font-family:'Bebas Neue',sans-serif; font-size:clamp(5rem,16vw,12rem); color:rgba(255,107,0,0.05); line-height:0.8; pointer-events:none; }
+  .arch-title { font-family:'Bebas Neue',sans-serif; font-size:clamp(3rem,9vw,6rem); line-height:0.85; letter-spacing:2px; position:relative; z-index:1; animation: fadeUp 0.6s 0.1s ease both; }
+  .arch-title span { color:var(--orange); }
+  .arch-sub { color:var(--gray); margin-top:14px; max-width:560px; line-height:1.6; animation: fadeUp 0.6s 0.25s ease both; }
+  .season-tabs { display:flex; gap:8px; flex-wrap:wrap; margin-top:24px; animation: fadeUp 0.6s 0.35s ease both; }
+  .season-tab { padding:10px 20px; font-weight:700; font-size:0.8rem; letter-spacing:1.5px; text-transform:uppercase; text-decoration:none; border:1px solid var(--orange); background:var(--orange); color:var(--black); }
+  .season-tab.soon { background:transparent; color:var(--gray); border-color:rgba(255,255,255,0.15); }
+  .season-card { max-width:1200px; margin:28px auto 0; padding:0 40px; animation: fadeUp 0.6s 0.45s ease both; }
+  .season-card-in { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,107,0,0.35); }
+  .sc-item { background:linear-gradient(135deg, rgba(255,107,0,0.12), rgba(255,107,0,0.02)); padding:20px 16px; }
+  .sc-n { font-family:'Bebas Neue',sans-serif; font-size:1.9rem; color:var(--orange); line-height:1; }
+  .sc-l { font-size:0.68rem; color:var(--gray); letter-spacing:2px; text-transform:uppercase; margin-top:6px; }
+  @media(max-width:768px){ .arch-hero { padding:96px 16px 16px; } .season-card { padding:0 16px; } .season-card-in { grid-template-columns:1fr 1fr; } }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo" style="text-decoration:none;">Futsal <span>Fabbrico</span></a>
+  <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menu"><span></span><span></span><span></span></button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html">← Home</a></li>
+    <li><a href="index.html#stagione">Stagione 26-27</a></li>
+    <li><a href="archivio.html" style="color:var(--white);">Archivio</a></li>
+    <li><a href="tdp_early.html">Torneo del Prete ↗</a></li>
+    <li><a href="index.html#contatti">Contatti</a></li>
+  </ul>
+</nav>
+
+<!-- INTESTAZIONE -->
+<div class="arch-hero" id="top">
+  <div class="hero-tag">🗂️ Archivio</div>
+  <h1 class="arch-title">STAGIONI <span>PASSATE</span></h1>
+  <p class="arch-sub">Risultati, classifiche e marcatori delle stagioni concluse del Futsal Fabbrico.</p>
+  <div class="season-tabs">
+    <a href="#stagione-2025-26" class="season-tab">Stagione 2025-26</a>
+    <span class="season-tab soon">Altre stagioni in arrivo</span>
+  </div>
+</div>
+
+<!-- STAGIONE 2025-26 -->
+<div id="stagione-2025-26">
+  <div class="season-card">
+    <div class="section-label" style="margin-bottom:10px;">// Stagione 2025-26 · in breve</div>
+    <div class="season-card-in">
+      <div class="sc-item"><div class="sc-n">3°</div><div class="sc-l">Campionato · Girone B</div></div>
+      <div class="sc-item"><div class="sc-n">2</div><div class="sc-l">Finali disputate</div></div>
+      <div class="sc-item"><div class="sc-n">65</div><div class="sc-l">Gol in campionato</div></div>
+      <div class="sc-item"><div class="sc-n" style="font-size:1.3rem;line-height:1.15;">Franzè · Cottafava</div><div class="sc-l">Capocannonieri · 10 gol</div></div>
+    </div>
+  </div>
+
+<!-- RISULTATI -->
+<section id="risultati-2526" style="padding-top:20px;">
+  <div class="section-label">// Stagione 2025/26 — Conclusa</div>
+  <h2 class="section-title">Risultati 2025-26</h2>
+
+  <!-- STATS BANNER -->
+  <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:12px; margin-bottom:36px;">
+    <div style="background:rgba(0,200,100,0.08);border:1px solid rgba(0,200,100,0.25);padding:16px;text-align:center;"><div style="font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:#00C864;line-height:1;">9</div><div style="font-size:0.7rem;color:var(--gray);letter-spacing:2px;text-transform:uppercase;margin-top:4px;">Vittorie</div></div>
+    <div style="background:rgba(255,200,0,0.08);border:1px solid rgba(255,200,0,0.25);padding:16px;text-align:center;"><div style="font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:#FFC800;line-height:1;">4</div><div style="font-size:0.7rem;color:var(--gray);letter-spacing:2px;text-transform:uppercase;margin-top:4px;">Pareggi</div></div>
+    <div style="background:rgba(255,60,60,0.08);border:1px solid rgba(255,60,60,0.25);padding:16px;text-align:center;"><div style="font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:#FF3C3C;line-height:1;">3</div><div style="font-size:0.7rem;color:var(--gray);letter-spacing:2px;text-transform:uppercase;margin-top:4px;">Sconfitte</div></div>
+    <div style="background:rgba(255,107,0,0.08);border:1px solid rgba(255,107,0,0.25);padding:16px;text-align:center;"><div style="font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:var(--orange);line-height:1;">65</div><div style="font-size:0.7rem;color:var(--gray);letter-spacing:2px;text-transform:uppercase;margin-top:4px;">Gol Fatti</div></div>
+    <div style="background:rgba(255,107,0,0.08);border:1px solid rgba(255,107,0,0.25);padding:16px;text-align:center;"><div style="font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:var(--orange);line-height:1;">41</div><div style="font-size:0.7rem;color:var(--gray);letter-spacing:2px;text-transform:uppercase;margin-top:4px;">Gol Subiti</div></div>
+    <div style="background:rgba(255,107,0,0.15);border:1px solid rgba(255,107,0,0.5);padding:16px;text-align:center;"><div style="font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:var(--orange);line-height:1;">3°</div><div style="font-size:0.7rem;color:var(--gray);letter-spacing:2px;text-transform:uppercase;margin-top:4px;">Girone B</div></div>
+  </div>
+
+
+
+  <!-- CLASSIFICA FINALE CAMPIONATO -->
+  <div style="margin-bottom:40px;">
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:3px;color:var(--orange);margin-bottom:16px;">Classifica Finale — Girone B</div>
+    <div class="table-scroll">
+    <table class="standings-table">
+      <thead>
+        <tr>
+          <th>Pos</th>
+          <th>Squadra</th>
+          <th style="text-align:center;">PT</th>
+          <th style="text-align:center;">DR</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="pos-num">1</span></td><td>Futsal Ferrara</td><td style="text-align:center;font-weight:700;">45</td><td style="text-align:center;color:var(--gray);">+103</td></tr>
+        <tr><td><span class="pos-num">2</span></td><td>Carpi Futsal</td><td style="text-align:center;font-weight:700;">35</td><td style="text-align:center;color:var(--gray);">+15</td></tr>
+        <tr style="background:rgba(255,107,0,0.08);border:1px solid rgba(255,107,0,0.3);"><td><span class="pos-num first">3</span></td><td style="color:var(--orange);font-weight:700;">Futsal Fabbrico</td><td style="text-align:center;font-weight:700;color:var(--orange);">34</td><td style="text-align:center;color:var(--orange);">+32</td></tr>
+        <tr><td><span class="pos-num">4</span></td><td>Virtus Massese</td><td style="text-align:center;font-weight:700;">28</td><td style="text-align:center;color:var(--gray);">+16</td></tr>
+        <tr><td><span class="pos-num">5</span></td><td>Virtus Novellara</td><td style="text-align:center;font-weight:700;">16</td><td style="text-align:center;color:var(--gray);">-24</td></tr>
+        <tr><td><span class="pos-num">6</span></td><td>M.T. Athletic</td><td style="text-align:center;font-weight:700;">12</td><td style="text-align:center;color:var(--gray);">-28</td></tr>
+        <tr><td><span class="pos-num">7</span></td><td>Futsal Impact</td><td style="text-align:center;font-weight:700;">6</td><td style="text-align:center;color:var(--gray);">-82</td></tr>
+        <tr><td><span class="pos-num">8</span></td><td>Futsal Soccer la Bassa</td><td style="text-align:center;font-weight:700;">6</td><td style="text-align:center;color:var(--gray);">-32</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div style="margin-top:12px;padding:12px 16px;background:rgba(255,107,0,0.06);border-left:3px solid var(--orange);font-size:0.85rem;color:var(--gray);">
+      🏅 Miglior difesa e secondo miglior attacco del girone · <strong style="color:var(--white);">3° posto in classifica</strong>
+    </div>
+  </div>
+
+  <!-- TOGGLE BUTTON -->
+  <div style="margin-bottom:16px;">
+    <button onclick="toggleRisultati()" id="btn-toggle-risultati" class="btn btn-secondary" style="font-size:0.75rem; padding:10px 20px;">▲ Nascondi risultati</button>
+  </div>
+
+  <!-- CONTENUTO RISULTATI (nascosto di default) -->
+  <div id="risultati-content">
+
+  <!-- TABS -->
+  <div style="display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap;">
+    <button onclick="showTab('campionato')" id="tab-campionato" class="btn btn-primary" style="font-size:0.75rem; padding:10px 20px;">Campionato</button>
+    <button onclick="showTab('coppa')" id="tab-coppa" class="btn btn-secondary" style="font-size:0.75rem; padding:10px 20px;">Coppa</button>
+    <button onclick="showTab('playoff')" id="tab-playoff" class="btn btn-secondary" style="font-size:0.75rem; padding:10px 20px;">Playoff</button>
+  </div>
+
+    <!-- CAMPIONATO TIMELINE -->
+    <div id="tab-campionato-content">
+      <div style="display:flex; flex-direction:column; gap:0;">
+        <div class="tl-row"><div class="tl-jn">G1</div><div><div class="tl-teams">vs Futsal Ferrara</div><div class="tl-scorers">Cottafava x3, Miglioli</div></div><div class="tl-score loss">4–6</div></div>
+        <div class="tl-row"><div class="tl-jn">G2</div><div><div class="tl-teams">vs Carpi Futsal</div><div class="tl-scorers">Colato</div></div><div class="tl-score draw">1–1</div></div>
+        <div class="tl-row"><div class="tl-jn">G3</div><div><div class="tl-teams">vs Virtus Novellara</div><div class="tl-scorers">Pantaleoni, Bordini</div></div><div class="tl-score draw">2–2</div></div>
+        <div class="tl-row"><div class="tl-jn">G4</div><div><div class="tl-teams">vs MT Athletic</div><div class="tl-scorers">Bigliardi x2, Cottafava, Scardovelli, Autogol x2</div></div><div class="tl-score win">6–1</div></div>
+        <div class="tl-row"><div class="tl-jn">G5</div><div><div class="tl-teams">vs Soccer La Bassa</div><div class="tl-scorers">Cottafava x3, Scardovelli, Bordini</div></div><div class="tl-score win">5–2</div></div>
+        <div class="tl-row"><div class="tl-jn">G6</div><div><div class="tl-teams">vs Futsal Impact</div><div class="tl-scorers">Cottafava x2, Scardovelli, Pantaleoni, Bigliardi, Bordoni, Corradi</div></div><div class="tl-score win">7–1</div></div>
+        <div class="tl-row"><div class="tl-jn">G7</div><div><div class="tl-teams">vs Virtus Massese</div><div class="tl-scorers">Nicolini</div></div><div class="tl-score draw">1–1</div></div>
+        <div class="tl-row"><div class="tl-jn">G8</div><div><div class="tl-teams">vs Virtus Massese</div><div class="tl-scorers">Corradi x2, Scardovelli x2, Bigliardi, Nicolini, Franzè</div></div><div class="tl-score win">7–3</div></div>
+        <div class="tl-row"><div class="tl-jn">G9</div><div><div class="tl-teams">vs Futsal Ferrara</div><div class="tl-scorers">Bordoni, Lusuardi</div></div><div class="tl-score loss">2–3</div></div>
+        <div class="tl-row"><div class="tl-jn">G10</div><div><div class="tl-teams">vs Carpi Futsal</div><div class="tl-scorers">Bigliardi x2, Cottafava</div></div><div class="tl-score draw">3–3</div></div>
+        <div class="tl-row"><div class="tl-jn">G11</div><div><div class="tl-teams">vs Virtus Novellara</div><div class="tl-scorers">Colato, Bordini, Bigliardi</div></div><div class="tl-score win">6–0 (TAV)</div></div>
+        <div class="tl-row"><div class="tl-jn">G12</div><div><div class="tl-teams">vs MT Athletic</div><div class="tl-scorers">Franzè x2, Miglioli, Bordoni, Autogol</div></div><div class="tl-score win">5–1</div></div>
+        <div class="tl-row"><div class="tl-jn">G13</div><div><div class="tl-teams">vs Soccer La Bassa</div><div class="tl-scorers">Nicolini, Bordoni</div></div><div class="tl-score win">2–0</div></div>
+        <div class="tl-row"><div class="tl-jn">G14</div><div><div class="tl-teams">vs Futsal Impact</div><div class="tl-scorers">Bordini x2, Franzè, Lusuardi</div></div><div class="tl-score win">4–3</div></div>
+        <div class="tl-row"><div class="tl-jn">G15</div><div><div class="tl-teams">vs Virtus Massese</div><div class="tl-scorers">Franzè x4, Nicolini x2</div></div><div class="tl-score win">6–5</div></div>
+        <div class="tl-row" style="border-bottom:none;"><div class="tl-jn">G16</div><div><div class="tl-teams">vs MT Athletic</div><div class="tl-scorers">Franzè x3, Bordini x3, Panisi</div></div><div class="tl-score win">7–4</div></div>
+      </div>
+    </div>
+
+    <!-- COPPA TIMELINE -->
+    <div id="tab-coppa-content" style="display:none;">
+      <div style="display:flex; flex-direction:column; gap:0;">
+        <div class="tl-row"><div class="tl-jn">T1</div><div><div class="tl-teams">vs MT Athletic</div><div class="tl-scorers">Franzè x4, Cottafava</div></div><div class="tl-score win">5–2</div></div>
+        <div class="tl-row"><div class="tl-jn">T2</div><div><div class="tl-teams">vs Carpi Futsal</div><div class="tl-scorers">Bordini, Nicolini</div></div><div class="tl-score win">2–1</div></div>
+        <div class="tl-row" style="border-bottom:none;"><div class="tl-jn">T3</div><div><div class="tl-teams">vs Futsal Ferrara</div><div class="tl-scorers">Nicolini, Bigliardi</div></div><div class="tl-score loss">2–3</div></div>
+      </div>
+    </div>
+
+    <!-- PLAYOFF TIMELINE -->
+    <div id="tab-playoff-content" style="display:none;">
+      <div style="display:flex; flex-direction:column; gap:0;">
+        <div class="tl-row">
+          <div class="tl-jn">Semi</div>
+          <div>
+            <div class="tl-teams">vs Carpi Futsal</div>
+            <div class="tl-scorers">Franzè x2, Nicolini</div>
+          </div>
+          <div class="tl-score win">3–2</div>
+        </div>
+        <div class="tl-row" style="border-bottom:none; background:rgba(255,60,60,0.04);">
+          <div class="tl-jn" style="color:var(--orange);">Finale</div>
+          <div>
+            <div class="tl-teams">vs I Maledetti <span style="font-size:0.75rem;color:var(--gray);font-weight:400;">— Finale persa</span></div>
+            <div class="tl-scorers">Nicolini</div>
+          </div>
+          <div class="tl-score loss">1–4</div>
+        </div>
+      </div>
+      <div style="margin-top:20px; padding:16px 20px; background:rgba(255,107,0,0.06); border-left:3px solid var(--orange);">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:1px;margin-bottom:4px;">Stagione conclusa — 3° posto nel Girone B</div>
+        <div style="color:var(--gray);font-size:0.85rem;">Chiudiamo la stagione con due finali disputate e un terzo posto in campionato. La testa ora è già alla prossima stagione 💪🏻</div>
+      </div>
+    </div>
+
+  </div><!-- fine risultati-content -->
+</section>
+
+<!-- MARCATORI -->
+<div class="section-full" style="background:var(--dark);">
+  <div class="section-full-inner">
+    <div class="section-label">// Stagione 2025/26 — Conclusa</div>
+    <h2 class="section-title">Marcatori 2025-26</h2>
+
+    <div style="margin-bottom:16px;">
+      <button onclick="toggleMarcatori()" id="btn-toggle-marcatori" class="btn btn-secondary" style="font-size:0.75rem; padding:10px 20px;">▲ Nascondi classifica</button>
+    </div>
+
+    <div id="marcatori-content">
+      <div class="table-scroll"><table class="standings-table">
+        <thead>
+          <tr>
+            <th>Pos</th>
+            <th>Giocatore</th>
+            <th>Partite</th>
+            <th>Gol</th>
+            <th>Assist</th>
+            <th>Amm.</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="pos-num first">1</span></td><td>Nazzareno Franzè</td><td>9</td><td style="color:var(--orange);font-weight:700;">10</td><td>5</td><td>0</td></tr>
+          <tr><td><span class="pos-num first">1</span></td><td>Matteo Cottafava</td><td>11</td><td style="color:var(--orange);font-weight:700;">10</td><td>2</td><td>1</td></tr>
+          <tr><td><span class="pos-num">3</span></td><td>Filippo Bordini</td><td>15</td><td style="font-weight:700;">8</td><td>4</td><td>0</td></tr>
+          <tr><td><span class="pos-num">4</span></td><td>Andrea Bigliardi</td><td>10</td><td style="font-weight:700;">7</td><td>6</td><td>2</td></tr>
+          <tr><td><span class="pos-num">5</span></td><td>Gianluca Scardovelli</td><td>13</td><td style="font-weight:700;">5</td><td>4</td><td>0</td></tr>
+          <tr><td><span class="pos-num">5</span></td><td>Riccardo Nicolini</td><td>12</td><td style="font-weight:700;">5</td><td>4</td><td>0</td></tr>
+          <tr><td><span class="pos-num">7</span></td><td>Marcello Bordoni</td><td>16</td><td style="font-weight:700;">4</td><td>3</td><td>0</td></tr>
+          <tr><td><span class="pos-num">8</span></td><td>Davide Corradi</td><td>6</td><td style="font-weight:700;">3</td><td>3</td><td>0</td></tr>
+          <tr><td><span class="pos-num">9</span></td><td>Dario Pantaleoni</td><td>14</td><td style="font-weight:700;">2</td><td>4</td><td>0</td></tr>
+          <tr><td><span class="pos-num">9</span></td><td>Niccolò Miglioli</td><td>9</td><td style="font-weight:700;">2</td><td>1</td><td>0</td></tr>
+          <tr><td><span class="pos-num">9</span></td><td>Luca Lusuardi</td><td>14</td><td style="font-weight:700;">2</td><td>1</td><td>0</td></tr>
+          <tr><td><span class="pos-num">12</span></td><td>Roberto Colato</td><td>12</td><td style="font-weight:700;">2</td><td>3</td><td>4</td></tr>
+          <tr><td><span class="pos-num">13</span></td><td>Jacopo Panisi</td><td>15</td><td style="font-weight:700;">1</td><td>1</td><td>0</td></tr>
+          <tr><td><span class="pos-num">14</span></td><td>Fabio Fiorini</td><td>12</td><td style="font-weight:700;">0</td><td>3</td><td>1</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+</div>
+
+</div>
+
+<hr class="divider">
+<div style="text-align:center;padding:40px 16px;">
+  <a href="index.html#stagione" class="btn btn-primary" style="display:inline-block;">← Torna alla stagione 26-27</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">FUTSAL FABBRICO</div>
+  <p class="footer-text">ASD Futsal Fabbrico · Fabbrico (RE) · Fondato nel 1989</p>
+  <p class="footer-text" style="margin-top:8px; font-size:0.75rem; opacity:0.5;">© 2026 Futsal Fabbrico ASD — Tutti i diritti riservati</p>
+</footer>
+
+<script>
+  // Toggle marcatori
+  function toggleMarcatori() {
+    const content = document.getElementById('marcatori-content');
+    const btn = document.getElementById('btn-toggle-marcatori');
+    const visible = content.style.display !== 'none';
+    content.style.display = visible ? 'none' : 'block';
+    btn.textContent = visible ? '▼ Mostra classifica' : '▲ Nascondi classifica';
+  }
+
+  // Toggle risultati
+  function toggleRisultati() {
+    const content = document.getElementById('risultati-content');
+    const btn = document.getElementById('btn-toggle-risultati');
+    const visible = content.style.display !== 'none';
+    content.style.display = visible ? 'none' : 'block';
+    btn.textContent = visible ? '▼ Mostra risultati' : '▲ Nascondi risultati';
+  }
+
+  // Tab switcher
+  function showTab(tab) {
+    ['campionato','coppa','playoff'].forEach(t => {
+      document.getElementById('tab-'+t+'-content').style.display = t===tab ? 'block' : 'none';
+      const btn = document.getElementById('tab-'+t);
+      btn.className = t===tab ? 'btn btn-primary' : 'btn btn-secondary';
+      btn.style.fontSize = '0.75rem';
+      btn.style.padding = '10px 20px';
+    });
+  }
+
+  // Active nav link on scroll
+  const sections = document.querySelectorAll('[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.classList.remove('active');
+      if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+    });
+  });
+</script>
+<script>
+function toggleNav() {
+  var nav = document.getElementById('nav-links');
+  var btn = document.getElementById('hamburger');
+  nav.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+// Close nav on link click
+document.querySelectorAll('.nav-links a').forEach(function(a){
+  a.addEventListener('click', function(){
+    document.getElementById('nav-links').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+  });
+});
+</script>
+<script>
+window.addEventListener("scroll", () => { const t = document.getElementById("to-top"); if (t) t.classList.toggle("show", window.scrollY > 700); }, { passive:true });
+</script>
+<a href="#top" class="to-top" id="to-top" aria-label="Torna su">↑</a>
+</body>
+</html>

@@ -502,6 +502,7 @@
 
   .social-links {
     display: flex;
+    flex-wrap: wrap;
     gap: 12px;
     margin-top: 32px;
   }
@@ -781,6 +782,25 @@
   .quick a { display:inline-flex; align-items:center; gap:6px; padding:9px 14px; background:rgba(10,10,10,0.55); backdrop-filter:blur(6px); border:1px solid rgba(255,255,255,0.18); color:var(--white); text-decoration:none; font-size:0.74rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; transition:all 0.2s; }
   .quick a:hover { border-color:var(--orange); color:var(--orange); }
   .quick a.past { border-color:rgba(255,107,0,0.5); }
+  .yt-band { position:relative; overflow:hidden; background:#0d0d0d; padding:64px 0; border-top:1px solid rgba(255,0,0,0.25); border-bottom:1px solid rgba(255,0,0,0.25); }
+  .yt-band::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 60% 80% at 85% 50%, rgba(255,0,0,0.14), transparent 65%); pointer-events:none; }
+  .yt-in { position:relative; max-width:1200px; margin:0 auto; padding:0 40px; display:grid; grid-template-columns:1fr 1.35fr; gap:40px; align-items:center; }
+  .yt-label { font-size:0.75rem; font-weight:700; letter-spacing:4px; text-transform:uppercase; color:#FF3B3B; margin-bottom:12px; display:flex; align-items:center; gap:10px; }
+  .yt-logo { width:34px; height:24px; background:#FF0000; border-radius:6px; display:inline-flex; align-items:center; justify-content:center; }
+  .yt-logo::after { content:''; border-left:9px solid #fff; border-top:6px solid transparent; border-bottom:6px solid transparent; margin-left:2px; }
+  .yt-title { font-family:'Bebas Neue',sans-serif; font-size:clamp(2.4rem,5vw,3.6rem); line-height:0.95; letter-spacing:2px; margin-bottom:14px; }
+  .yt-title span { color:#FF3B3B; }
+  .yt-text { color:var(--gray); line-height:1.6; margin-bottom:24px; max-width:420px; }
+  .yt-btns { display:flex; gap:10px; flex-wrap:wrap; }
+  .yt-btn { display:inline-flex; align-items:center; gap:8px; padding:14px 24px; background:#FF0000; color:#fff; text-decoration:none; font-weight:700; font-size:0.82rem; letter-spacing:2px; text-transform:uppercase; transition:transform 0.2s, background 0.2s; }
+  .yt-btn:hover { background:#d90000; transform:translateY(-2px); }
+  .yt-btn.ghost { background:transparent; border:2px solid rgba(255,255,255,0.25); }
+  .yt-btn.ghost:hover { border-color:#FF3B3B; color:#FF3B3B; background:transparent; }
+  .yt-player { position:relative; aspect-ratio:16/9; background:#000; border:1px solid rgba(255,0,0,0.35); box-shadow:0 20px 60px rgba(0,0,0,0.6), 0 0 40px rgba(255,0,0,0.12); }
+  .yt-player iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
+  .quick a.yt { border-color:rgba(255,0,0,0.6); }
+  .quick a.yt:hover { color:#FF3B3B; border-color:#FF3B3B; }
+  @media(max-width:768px){ .yt-band { padding:36px 0; } .yt-in { grid-template-columns:1fr; gap:22px; padding:0 16px; } .yt-btns .yt-btn { flex:1; justify-content:center; padding:13px 10px; font-size:0.75rem; } }
   .to-top { position:fixed; right:16px; bottom:18px; z-index:90; width:46px; height:46px; display:flex; align-items:center; justify-content:center; background:var(--orange); color:var(--black); font-size:1.2rem; font-weight:900; text-decoration:none; box-shadow:0 6px 20px rgba(0,0,0,0.5); opacity:0; transform:translateY(16px); pointer-events:none; transition:opacity 0.3s, transform 0.3s; }
   .to-top.show { opacity:1; transform:none; pointer-events:auto; }
   @media(max-width: 768px) {
@@ -801,7 +821,7 @@
     <li><a href="#stagione">Stagione 26-27</a></li>
     <li><a href="#risultati">Risultati</a></li>
     <li><a href="#rosa">Rosa</a></li>
-    <li><a href="#stagione-2526">Stagione 25-26</a></li>
+    <li><a href="archivio.html">Stagione 25-26</a></li>
     <li><a href="tdp_early.html">Torneo del Prete ↗</a></li>
     <li><a href="#contatti">Contatti</a></li>
   </ul>
@@ -831,7 +851,8 @@
       <a href="#marcatori">⚽ Marcatori</a>
       <a href="#rosa">👥 Rosa</a>
       <a href="#contatti">📍 Contatti</a>
-      <a href="#stagione-2526" class="past wide">🗂️ Stagione 2025-26</a>
+      <a href="#highlights" class="yt">▶️ Highlights</a>
+      <a href="archivio.html" class="past">🗂️ Stagione 25-26</a>
     </nav>
   </div>
 </div>
@@ -856,7 +877,24 @@
   </div>
 </div>
 
-<hr class="divider">
+<!-- HIGHLIGHTS YOUTUBE -->
+<div class="yt-band" id="highlights">
+  <div class="yt-in">
+    <div class="reveal">
+      <div class="yt-label"><span class="yt-logo"></span>Canale ufficiale</div>
+      <h2 class="yt-title">Rivivi ogni<br><span>partita</span></h2>
+      <p class="yt-text">Highlights, gol e momenti migliori del Futsal Fabbrico. Iscriviti al canale per non perderti nessun video.</p>
+      <div class="yt-btns">
+        <a href="https://www.youtube.com/@futsalfabbrico?sub_confirmation=1" target="_blank" rel="noopener" class="yt-btn">▶ Iscriviti</a>
+        <a href="https://www.youtube.com/@futsalfabbrico/videos" target="_blank" rel="noopener" class="yt-btn ghost">Tutti i video</a>
+      </div>
+    </div>
+    <div class="yt-player reveal">
+      <!-- mostra in automatico gli ultimi video caricati sul canale -->
+      <iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=UUBWwDdFZKIRqgftR5zyN_9g" title="Ultimi video Futsal Fabbrico" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
 
 <!-- RISULTATI 2026-27 -->
 <section id="risultati">
@@ -894,186 +932,16 @@
 <hr class="divider">
 
 <!-- ARCHIVIO -->
-<div class="section-full" id="archivio" style="background:var(--dark);padding-bottom:0;">
+<div class="section-full" id="archivio" style="background:var(--dark);">
   <div class="section-full-inner">
     <div class="section-label">// Archivio</div>
-    <h2 class="section-title" style="margin-bottom:24px;">Stagioni passate</h2>
-    <button onclick="toggleArchivio()" id="btn-toggle-archivio" class="archivio-btn">
-      <span><strong>Stagione 2025-26</strong> · 3° posto Girone B · Finale playoff</span>
-      <span id="archivio-arrow">▼</span>
-    </button>
+    <h2 class="section-title" style="margin-bottom:20px;">Stagioni passate</h2>
+    <a href="archivio.html" class="archivio-btn" style="text-decoration:none;">
+      <span><strong>Stagione 2025-26</strong> · 3° posto Girone B · 2 finali disputate</span>
+      <span>→</span>
+    </a>
   </div>
 </div>
-<div id="archivio-content" style="display:none;">
-<div id="stagione-2526"></div>
-
-<!-- RISULTATI -->
-<section id="risultati-2526">
-  <div class="section-label">// Stagione 2025/26 — Conclusa</div>
-  <h2 class="section-title">Risultati 2025-26</h2>
-
-  <!-- STATS BANNER -->
-  <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:12px; margin-bottom:36px;">
-    <div style="background:rgba(0,200,100,0.08);border:1px solid rgba(0,200,100,0.25);padding:16px;text-align:center;"><div style="font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:#00C864;line-height:1;">9</div><div style="font-size:0.7rem;color:var(--gray);letter-spacing:2px;text-transform:uppercase;margin-top:4px;">Vittorie</div></div>
-    <div style="background:rgba(255,200,0,0.08);border:1px solid rgba(255,200,0,0.25);padding:16px;text-align:center;"><div style="font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:#FFC800;line-height:1;">4</div><div style="font-size:0.7rem;color:var(--gray);letter-spacing:2px;text-transform:uppercase;margin-top:4px;">Pareggi</div></div>
-    <div style="background:rgba(255,60,60,0.08);border:1px solid rgba(255,60,60,0.25);padding:16px;text-align:center;"><div style="font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:#FF3C3C;line-height:1;">3</div><div style="font-size:0.7rem;color:var(--gray);letter-spacing:2px;text-transform:uppercase;margin-top:4px;">Sconfitte</div></div>
-    <div style="background:rgba(255,107,0,0.08);border:1px solid rgba(255,107,0,0.25);padding:16px;text-align:center;"><div style="font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:var(--orange);line-height:1;">65</div><div style="font-size:0.7rem;color:var(--gray);letter-spacing:2px;text-transform:uppercase;margin-top:4px;">Gol Fatti</div></div>
-    <div style="background:rgba(255,107,0,0.08);border:1px solid rgba(255,107,0,0.25);padding:16px;text-align:center;"><div style="font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:var(--orange);line-height:1;">41</div><div style="font-size:0.7rem;color:var(--gray);letter-spacing:2px;text-transform:uppercase;margin-top:4px;">Gol Subiti</div></div>
-    <div style="background:rgba(255,107,0,0.15);border:1px solid rgba(255,107,0,0.5);padding:16px;text-align:center;"><div style="font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:var(--orange);line-height:1;">3°</div><div style="font-size:0.7rem;color:var(--gray);letter-spacing:2px;text-transform:uppercase;margin-top:4px;">Girone B</div></div>
-  </div>
-
-
-
-  <!-- CLASSIFICA FINALE CAMPIONATO -->
-  <div style="margin-bottom:40px;">
-    <div style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:3px;color:var(--orange);margin-bottom:16px;">Classifica Finale — Girone B</div>
-    <div class="table-scroll">
-    <table class="standings-table">
-      <thead>
-        <tr>
-          <th>Pos</th>
-          <th>Squadra</th>
-          <th style="text-align:center;">PT</th>
-          <th style="text-align:center;">DR</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td><span class="pos-num">1</span></td><td>Futsal Ferrara</td><td style="text-align:center;font-weight:700;">45</td><td style="text-align:center;color:var(--gray);">+103</td></tr>
-        <tr><td><span class="pos-num">2</span></td><td>Carpi Futsal</td><td style="text-align:center;font-weight:700;">35</td><td style="text-align:center;color:var(--gray);">+15</td></tr>
-        <tr style="background:rgba(255,107,0,0.08);border:1px solid rgba(255,107,0,0.3);"><td><span class="pos-num first">3</span></td><td style="color:var(--orange);font-weight:700;">Futsal Fabbrico</td><td style="text-align:center;font-weight:700;color:var(--orange);">34</td><td style="text-align:center;color:var(--orange);">+32</td></tr>
-        <tr><td><span class="pos-num">4</span></td><td>Virtus Massese</td><td style="text-align:center;font-weight:700;">28</td><td style="text-align:center;color:var(--gray);">+16</td></tr>
-        <tr><td><span class="pos-num">5</span></td><td>Virtus Novellara</td><td style="text-align:center;font-weight:700;">16</td><td style="text-align:center;color:var(--gray);">-24</td></tr>
-        <tr><td><span class="pos-num">6</span></td><td>M.T. Athletic</td><td style="text-align:center;font-weight:700;">12</td><td style="text-align:center;color:var(--gray);">-28</td></tr>
-        <tr><td><span class="pos-num">7</span></td><td>Futsal Impact</td><td style="text-align:center;font-weight:700;">6</td><td style="text-align:center;color:var(--gray);">-82</td></tr>
-        <tr><td><span class="pos-num">8</span></td><td>Futsal Soccer la Bassa</td><td style="text-align:center;font-weight:700;">6</td><td style="text-align:center;color:var(--gray);">-32</td></tr>
-      </tbody>
-    </table>
-    </div>
-    <div style="margin-top:12px;padding:12px 16px;background:rgba(255,107,0,0.06);border-left:3px solid var(--orange);font-size:0.85rem;color:var(--gray);">
-      🏅 Miglior difesa e secondo miglior attacco del girone · <strong style="color:var(--white);">3° posto in classifica</strong>
-    </div>
-  </div>
-
-  <!-- TOGGLE BUTTON -->
-  <div style="margin-bottom:16px;">
-    <button onclick="toggleRisultati()" id="btn-toggle-risultati" class="btn btn-secondary" style="font-size:0.75rem; padding:10px 20px;">▼ Mostra risultati</button>
-  </div>
-
-  <!-- CONTENUTO RISULTATI (nascosto di default) -->
-  <div id="risultati-content" style="display:none;">
-
-  <!-- TABS -->
-  <div style="display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap;">
-    <button onclick="showTab('campionato')" id="tab-campionato" class="btn btn-primary" style="font-size:0.75rem; padding:10px 20px;">Campionato</button>
-    <button onclick="showTab('coppa')" id="tab-coppa" class="btn btn-secondary" style="font-size:0.75rem; padding:10px 20px;">Coppa</button>
-    <button onclick="showTab('playoff')" id="tab-playoff" class="btn btn-secondary" style="font-size:0.75rem; padding:10px 20px;">Playoff</button>
-  </div>
-
-    <!-- CAMPIONATO TIMELINE -->
-    <div id="tab-campionato-content">
-      <div style="display:flex; flex-direction:column; gap:0;">
-        <div class="tl-row"><div class="tl-jn">G1</div><div><div class="tl-teams">vs Futsal Ferrara</div><div class="tl-scorers">Cottafava x3, Miglioli</div></div><div class="tl-score loss">4–6</div></div>
-        <div class="tl-row"><div class="tl-jn">G2</div><div><div class="tl-teams">vs Carpi Futsal</div><div class="tl-scorers">Colato</div></div><div class="tl-score draw">1–1</div></div>
-        <div class="tl-row"><div class="tl-jn">G3</div><div><div class="tl-teams">vs Virtus Novellara</div><div class="tl-scorers">Pantaleoni, Bordini</div></div><div class="tl-score draw">2–2</div></div>
-        <div class="tl-row"><div class="tl-jn">G4</div><div><div class="tl-teams">vs MT Athletic</div><div class="tl-scorers">Bigliardi x2, Cottafava, Scardovelli, Autogol x2</div></div><div class="tl-score win">6–1</div></div>
-        <div class="tl-row"><div class="tl-jn">G5</div><div><div class="tl-teams">vs Soccer La Bassa</div><div class="tl-scorers">Cottafava x3, Scardovelli, Bordini</div></div><div class="tl-score win">5–2</div></div>
-        <div class="tl-row"><div class="tl-jn">G6</div><div><div class="tl-teams">vs Futsal Impact</div><div class="tl-scorers">Cottafava x2, Scardovelli, Pantaleoni, Bigliardi, Bordoni, Corradi</div></div><div class="tl-score win">7–1</div></div>
-        <div class="tl-row"><div class="tl-jn">G7</div><div><div class="tl-teams">vs Virtus Massese</div><div class="tl-scorers">Nicolini</div></div><div class="tl-score draw">1–1</div></div>
-        <div class="tl-row"><div class="tl-jn">G8</div><div><div class="tl-teams">vs Virtus Massese</div><div class="tl-scorers">Corradi x2, Scardovelli x2, Bigliardi, Nicolini, Franzè</div></div><div class="tl-score win">7–3</div></div>
-        <div class="tl-row"><div class="tl-jn">G9</div><div><div class="tl-teams">vs Futsal Ferrara</div><div class="tl-scorers">Bordoni, Lusuardi</div></div><div class="tl-score loss">2–3</div></div>
-        <div class="tl-row"><div class="tl-jn">G10</div><div><div class="tl-teams">vs Carpi Futsal</div><div class="tl-scorers">Bigliardi x2, Cottafava</div></div><div class="tl-score draw">3–3</div></div>
-        <div class="tl-row"><div class="tl-jn">G11</div><div><div class="tl-teams">vs Virtus Novellara</div><div class="tl-scorers">Colato, Bordini, Bigliardi</div></div><div class="tl-score win">6–0 (TAV)</div></div>
-        <div class="tl-row"><div class="tl-jn">G12</div><div><div class="tl-teams">vs MT Athletic</div><div class="tl-scorers">Franzè x2, Miglioli, Bordoni, Autogol</div></div><div class="tl-score win">5–1</div></div>
-        <div class="tl-row"><div class="tl-jn">G13</div><div><div class="tl-teams">vs Soccer La Bassa</div><div class="tl-scorers">Nicolini, Bordoni</div></div><div class="tl-score win">2–0</div></div>
-        <div class="tl-row"><div class="tl-jn">G14</div><div><div class="tl-teams">vs Futsal Impact</div><div class="tl-scorers">Bordini x2, Franzè, Lusuardi</div></div><div class="tl-score win">4–3</div></div>
-        <div class="tl-row"><div class="tl-jn">G15</div><div><div class="tl-teams">vs Virtus Massese</div><div class="tl-scorers">Franzè x4, Nicolini x2</div></div><div class="tl-score win">6–5</div></div>
-        <div class="tl-row" style="border-bottom:none;"><div class="tl-jn">G16</div><div><div class="tl-teams">vs MT Athletic</div><div class="tl-scorers">Franzè x3, Bordini x3, Panisi</div></div><div class="tl-score win">7–4</div></div>
-      </div>
-    </div>
-
-    <!-- COPPA TIMELINE -->
-    <div id="tab-coppa-content" style="display:none;">
-      <div style="display:flex; flex-direction:column; gap:0;">
-        <div class="tl-row"><div class="tl-jn">T1</div><div><div class="tl-teams">vs MT Athletic</div><div class="tl-scorers">Franzè x4, Cottafava</div></div><div class="tl-score win">5–2</div></div>
-        <div class="tl-row"><div class="tl-jn">T2</div><div><div class="tl-teams">vs Carpi Futsal</div><div class="tl-scorers">Bordini, Nicolini</div></div><div class="tl-score win">2–1</div></div>
-        <div class="tl-row" style="border-bottom:none;"><div class="tl-jn">T3</div><div><div class="tl-teams">vs Futsal Ferrara</div><div class="tl-scorers">Nicolini, Bigliardi</div></div><div class="tl-score loss">2–3</div></div>
-      </div>
-    </div>
-
-    <!-- PLAYOFF TIMELINE -->
-    <div id="tab-playoff-content" style="display:none;">
-      <div style="display:flex; flex-direction:column; gap:0;">
-        <div class="tl-row">
-          <div class="tl-jn">Semi</div>
-          <div>
-            <div class="tl-teams">vs Carpi Futsal</div>
-            <div class="tl-scorers">Franzè x2, Nicolini</div>
-          </div>
-          <div class="tl-score win">3–2</div>
-        </div>
-        <div class="tl-row" style="border-bottom:none; background:rgba(255,60,60,0.04);">
-          <div class="tl-jn" style="color:var(--orange);">Finale</div>
-          <div>
-            <div class="tl-teams">vs I Maledetti <span style="font-size:0.75rem;color:var(--gray);font-weight:400;">— Finale persa</span></div>
-            <div class="tl-scorers">Nicolini</div>
-          </div>
-          <div class="tl-score loss">1–4</div>
-        </div>
-      </div>
-      <div style="margin-top:20px; padding:16px 20px; background:rgba(255,107,0,0.06); border-left:3px solid var(--orange);">
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:1px;margin-bottom:4px;">Stagione conclusa — 3° posto nel Girone B</div>
-        <div style="color:var(--gray);font-size:0.85rem;">Chiudiamo la stagione con due finali disputate e un terzo posto in campionato. La testa ora è già alla prossima stagione 💪🏻</div>
-      </div>
-    </div>
-
-  </div><!-- fine risultati-content -->
-</section>
-
-<!-- MARCATORI -->
-<div class="section-full" style="background:var(--dark);">
-  <div class="section-full-inner">
-    <div class="section-label">// Stagione 2025/26 — Conclusa</div>
-    <h2 class="section-title">Marcatori 2025-26</h2>
-
-    <div style="margin-bottom:16px;">
-      <button onclick="toggleMarcatori()" id="btn-toggle-marcatori" class="btn btn-secondary" style="font-size:0.75rem; padding:10px 20px;">▼ Mostra classifica</button>
-    </div>
-
-    <div id="marcatori-content" style="display:none;">
-      <div class="table-scroll"><table class="standings-table">
-        <thead>
-          <tr>
-            <th>Pos</th>
-            <th>Giocatore</th>
-            <th>Partite</th>
-            <th>Gol</th>
-            <th>Assist</th>
-            <th>Amm.</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td><span class="pos-num first">1</span></td><td>Nazzareno Franzè</td><td>9</td><td style="color:var(--orange);font-weight:700;">10</td><td>5</td><td>0</td></tr>
-          <tr><td><span class="pos-num first">1</span></td><td>Matteo Cottafava</td><td>11</td><td style="color:var(--orange);font-weight:700;">10</td><td>2</td><td>1</td></tr>
-          <tr><td><span class="pos-num">3</span></td><td>Filippo Bordini</td><td>15</td><td style="font-weight:700;">8</td><td>4</td><td>0</td></tr>
-          <tr><td><span class="pos-num">4</span></td><td>Andrea Bigliardi</td><td>10</td><td style="font-weight:700;">7</td><td>6</td><td>2</td></tr>
-          <tr><td><span class="pos-num">5</span></td><td>Gianluca Scardovelli</td><td>13</td><td style="font-weight:700;">5</td><td>4</td><td>0</td></tr>
-          <tr><td><span class="pos-num">5</span></td><td>Riccardo Nicolini</td><td>12</td><td style="font-weight:700;">5</td><td>4</td><td>0</td></tr>
-          <tr><td><span class="pos-num">7</span></td><td>Marcello Bordoni</td><td>16</td><td style="font-weight:700;">4</td><td>3</td><td>0</td></tr>
-          <tr><td><span class="pos-num">8</span></td><td>Davide Corradi</td><td>6</td><td style="font-weight:700;">3</td><td>3</td><td>0</td></tr>
-          <tr><td><span class="pos-num">9</span></td><td>Dario Pantaleoni</td><td>14</td><td style="font-weight:700;">2</td><td>4</td><td>0</td></tr>
-          <tr><td><span class="pos-num">9</span></td><td>Niccolò Miglioli</td><td>9</td><td style="font-weight:700;">2</td><td>1</td><td>0</td></tr>
-          <tr><td><span class="pos-num">9</span></td><td>Luca Lusuardi</td><td>14</td><td style="font-weight:700;">2</td><td>1</td><td>0</td></tr>
-          <tr><td><span class="pos-num">12</span></td><td>Roberto Colato</td><td>12</td><td style="font-weight:700;">2</td><td>3</td><td>4</td></tr>
-          <tr><td><span class="pos-num">13</span></td><td>Jacopo Panisi</td><td>15</td><td style="font-weight:700;">1</td><td>1</td><td>0</td></tr>
-          <tr><td><span class="pos-num">14</span></td><td>Fabio Fiorini</td><td>12</td><td style="font-weight:700;">0</td><td>3</td><td>1</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
-
-</div>
-</div><!-- fine archivio-content -->
 
 <!-- TDP SEZIONE COMPATTA -->
 <div id="tdp" style="position:relative;background:var(--black);overflow:hidden;padding:80px 0;">
@@ -1167,6 +1035,7 @@
       <div class="social-links">
         <a href="https://www.instagram.com/futsalfabbrico/" target="_blank" class="social-btn">📸 @futsalfabbrico</a>
         <a href="https://www.facebook.com/FutsalFabbrico/" target="_blank" class="social-btn">📘 Facebook</a>
+        <a href="https://www.youtube.com/@futsalfabbrico" target="_blank" class="social-btn">▶️ YouTube</a>
       </div>
     </div>
     <div>
@@ -1450,19 +1319,7 @@ const CLASSIFICA = [
   } else els.forEach(el => el.classList.add("in"));
 })();
 
-function apriArchivio() {
-  document.getElementById("archivio-content").style.display = "block";
-  document.getElementById("archivio-arrow").textContent = "▲";
-}
-document.querySelectorAll('a[href="#stagione-2526"]').forEach(a => a.addEventListener("click", apriArchivio));
-if (location.hash === "#stagione-2526") { apriArchivio(); setTimeout(() => document.getElementById("stagione-2526").scrollIntoView(), 50); }
 window.addEventListener("scroll", () => { const t = document.getElementById("to-top"); if (t) t.classList.toggle("show", window.scrollY > 700); }, { passive:true });
-function toggleArchivio() {
-  const c = document.getElementById("archivio-content");
-  const open = c.style.display === "none";
-  c.style.display = open ? "block" : "none";
-  document.getElementById("archivio-arrow").textContent = open ? "▲" : "▼";
-}
 </script>
 <a href="#home" class="to-top" id="to-top" aria-label="Torna su">↑</a>
 </body>
