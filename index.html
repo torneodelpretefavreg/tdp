@@ -1183,7 +1183,9 @@ const PARTITE = [
   { g:1, data:"2026-10-29", ora:"21:30", avv:"Mondial Vintage Club", casa:true, luogo:"Palazzetto dello Sport",
     noi:16, loro:1, mvp:"Cottafava",
     marcatori:{ Cottafava:3, Pantaleoni:3, Scardovelli:3, Bordoni:2, Miglioli:2, Bordini:1, Lusuardi:1, Nicolini:1 } },
-  { g:2, data:"2026-11-05", ora:"20:30", avv:"Virtus Massese", casa:false, luogo:"Palestra Aneser, Novi" },
+  { g:2, data:"2026-11-05", ora:"20:30", avv:"Virtus Massese", casa:false, luogo:"Palestra Aneser, Novi",
+    noi:3, loro:2,
+    marcatori:{ Bordini:1, Scardovelli:1, Lodi:1 } },
   { g:3, data:"2026-11-12", avv:"Esseffe Futsal",         casa:true  },
   { g:4, data:"2026-11-19", riposo:true },
   { g:5, data:"2026-11-26", avv:"Futsal Impact",          casa:false },
@@ -1194,14 +1196,15 @@ const PARTITE = [
 ];
 
 // CLASSIFICA — dalla grafica ufficiale; aggiorna dopo ogni giornata
-const CLASSIFICA_DOPO = 1; // giornata
+const CLASSIFICA_DOPO = 2; // giornata
+const CLASSIFICA_NOTA = "· G2 inserita solo per Fabbrico e Massese, altri risultati in arrivo"; // lascia "" quando è completa
 const CLASSIFICA = [
-  { sq:"Futsal Fabbrico",        g:1, v:1, n:0, p:0, dr:15,  pt:3 },
+  { sq:"Futsal Fabbrico",        g:2, v:2, n:0, p:0, dr:16,  pt:6 },
   { sq:"Junior Finale",          g:1, v:1, n:0, p:0, dr:3,   pt:3 },
   { sq:"M.T. Athletic",          g:1, v:1, n:0, p:0, dr:3,   pt:3 },
   { sq:"Esseffe Futsal",         g:1, v:1, n:0, p:0, dr:2,   pt:3 },
   { sq:"Infinity World",         g:0, v:0, n:0, p:0, dr:0,   pt:0 },
-  { sq:"Virtus Massese",         g:1, v:0, n:0, p:1, dr:-2,  pt:0 },
+  { sq:"Virtus Massese",         g:2, v:0, n:0, p:2, dr:-3,  pt:0 },
   { sq:"Futsal Soccer La Bassa", g:1, v:0, n:0, p:1, dr:-3,  pt:0 },
   { sq:"Futsal Impact",          g:1, v:0, n:0, p:1, dr:-3,  pt:0 },
   { sq:"Mondial Vintage Club",   g:1, v:0, n:0, p:1, dr:-15, pt:0 },
@@ -1280,7 +1283,7 @@ const CLASSIFICA = [
   }).join("");
 
   // Classifica
-  document.getElementById("classifica-note").textContent = `· dopo la giornata ${CLASSIFICA_DOPO}`;
+  document.getElementById("classifica-note").textContent = CLASSIFICA_NOTA || `· dopo la giornata ${CLASSIFICA_DOPO}`;
   document.getElementById("classifica-table").innerHTML =
     `<thead><tr><th>#</th><th style="text-align:left;">Squadra</th><th>G</th><th>V</th><th>N</th><th>P</th><th>DR</th><th>PT</th></tr></thead><tbody>` +
     ordinata.map((t,i) => `<tr class="${t.sq===NOI?'us':''}"><td><span class="pos-num ${i===0?'first':''}">${i+1}</span></td><td style="text-align:left;">${t.sq}</td><td>${t.g}</td><td>${t.v}</td><td>${t.n}</td><td>${t.p}</td><td>${t.dr>0?'+':''}${t.dr}</td><td class="pt">${t.pt}</td></tr>`).join("") +
