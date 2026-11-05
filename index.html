@@ -1146,6 +1146,7 @@ document.querySelectorAll('.nav-links a').forEach(function(a){
    ════════════════════════════════════════════════════════════════ */
 const CAMPIONATO = "CSI Serie B";
 const NOI = "Futsal Fabbrico";
+const CAMPO_CASA = "Palestra Fassi, Carpi"; // dove giochiamo le partite in casa
 
 // ROSA — ruolo: "Portiere" | "Centrale" | "Laterale" | "Pivot"; nuovo: true = arrivato quest'anno
 const ROSA = [
@@ -1186,7 +1187,7 @@ const PARTITE = [
   { g:2, data:"2026-11-05", ora:"20:30", avv:"Virtus Massese", casa:false, luogo:"Palestra Aneser, Novi",
     noi:3, loro:2,
     marcatori:{ Bordini:1, Scardovelli:1, Lodi:1 } },
-  { g:3, data:"2026-11-12", ora:"22:30", avv:"Esseffe Futsal", casa:false, luogo:"Palestra Fassi, Carpi" },
+  { g:3, data:"2026-11-12", ora:"22:30", avv:"Esseffe Futsal", casa:true, luogo:"Palestra Fassi, Carpi" },
   { g:4, data:"2026-11-19", riposo:true },
   { g:5, data:"2026-11-26", avv:"Futsal Impact",          casa:false },
   { g:6, data:"2026-12-03", avv:"Futsal Soccer La Bassa", casa:true  },
@@ -1242,7 +1243,7 @@ const CLASSIFICA = [
       <div class="mc-meta">
         <span>📅 <b>${fmtData(prossima.data)}</b></span>
         ${prossima.ora ? `<span>🕘 <b>${prossima.ora}</b></span>` : ""}
-        <span>📍 <b>${prossima.luogo || (prossima.casa ? "Palazzetto dello Sport, Fabbrico" : "In trasferta")}</b></span>
+        <span>📍 <b>${prossima.luogo || (prossima.casa ? CAMPO_CASA : "In trasferta")}</b></span>
       </div>
       <div class="mc-countdown">${cd}</div>`;
   } else {
