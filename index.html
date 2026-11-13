@@ -819,6 +819,13 @@
   .brand-mark { height:34px; width:auto; display:block; transition:transform 0.3s ease, filter 0.3s ease; }
   .brand:hover .brand-mark { transform:rotate(-6deg) scale(1.08); filter:drop-shadow(0 0 8px rgba(255,107,0,0.6)); }
   @media(max-width:768px){ .brand-mark { height:30px; } .brand { gap:8px; } }
+
+  /* ─── WEB APP: pulsante aggiorna ─── */
+  .app-refresh { display:none; margin-left:auto; margin-right:6px; width:40px; height:40px; align-items:center; justify-content:center; background:none; border:1px solid rgba(255,255,255,0.18); color:var(--white); font-size:1.15rem; cursor:pointer; }
+  .app-refresh:active { border-color:var(--orange); color:var(--orange); }
+  .app-refresh.spin { animation: appspin 0.8s linear infinite; }
+  @keyframes appspin { to { transform: rotate(360deg); } }
+  html.is-app .app-refresh { display:inline-flex; }
 </style>
 </head>
 <body>
@@ -826,6 +833,7 @@
 <!-- NAV -->
 <nav>
   <a href="index.html" class="nav-logo brand" aria-label="Home Futsal Fabbrico"><img src="logo.svg" alt="" class="brand-mark"><span style="color:var(--white);white-space:nowrap;"><b style="color:var(--orange);font-weight:inherit;">Futsal</b> Fabbrico</span></a>
+  <button class="app-refresh" id="app-refresh" aria-label="Aggiorna" onclick="aggiornaApp()">↻</button>
   <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menu"><span></span><span></span><span></span></button>
   <ul class="nav-links" id="nav-links">
     <li><a href="#home" class="active">Home</a></li>
@@ -1339,5 +1347,22 @@ const CLASSIFICA = [
 window.addEventListener("scroll", () => { const t = document.getElementById("to-top"); if (t) t.classList.toggle("show", window.scrollY > 700); }, { passive:true });
 </script>
 <a href="#home" class="to-top" id="to-top" aria-label="Torna su">↑</a>
+<script>
+/* Web app (icona sulla Home): si aggiorna quando la riapri dopo 3 minuti, o col pulsante ↻ */
+(function(){
+  var isApp = window.navigator.standalone === true || (window.matchMedia && window.matchMedia("(display-mode: standalone)").matches);
+  if (!isApp) return;
+  document.documentElement.classList.add("is-app");
+  var nascosta = 0;
+  document.addEventListener("visibilitychange", function(){
+    if (document.hidden) { nascosta = Date.now(); }
+    else if (nascosta && Date.now() - nascosta > 3*60*1000) { aggiornaApp(); }
+  });
+})();
+function aggiornaApp(){
+  var b = document.getElementById("app-refresh"); if (b) b.classList.add("spin");
+  location.replace(location.pathname + "?v=" + Date.now() + location.hash);
+}
+</script>
 </body>
 </html>
